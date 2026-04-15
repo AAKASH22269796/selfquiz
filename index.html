@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <h1>Quiz App</h1>
+    <h2 id="timer" style="text-align:center; color:white;"></h2>
+    <div id="start-screen">
+        <input type="number" id="num" placeholder="Enter number of questions">
+        <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+    <div id="quiz-container"></div>
+    <button id="submit-btn" onclick="submitQuiz()" style="display:none;">Submit</button>
+    <h2 id="result"></h2>
+    <button id="retry-btn" onclick="restartQuiz()" style="display:none;">Give Test Again</button>
+    <script src="script.js"></script>
+
+    </body>
+</html>

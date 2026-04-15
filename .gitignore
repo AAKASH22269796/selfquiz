@@ -1,0 +1,26 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules (if you add backend later)
+node_modules/
+
+# Environment files
+.env
+
+# VS Code settings (optional)
+.vscode/
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.tmp
+*.temp
+
+# Cache
+.cache/
