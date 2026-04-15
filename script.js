@@ -1,3 +1,11 @@
+
+let uid = localStorage.getItem("userId");
+
+if (!uid) {
+  uid = "user_" + Math.random().toString(36).substr(2, 9);
+  localStorage.setItem("userId", uid);
+}
+
 let timeLeft = 0;
 let timerInterval;
 
@@ -191,6 +199,7 @@ function submitQuiz() {
         "Score: " + score + "/" + selectedQuestions.length;
     document.getElementById("retry-btn").style.display = "block";
     db.collection("results").add({
+      userId: uid,
       name: window.username,
       score: score,
       total: selectedQuestions.length,
