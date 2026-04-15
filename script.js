@@ -198,13 +198,15 @@ function submitQuiz() {
     document.getElementById("result").innerText =
         "Score: " + score + "/" + selectedQuestions.length;
     document.getElementById("retry-btn").style.display = "block";
-    db.collection("results").add({
-      userId: uid,
+    db.collection("users")
+    .doc(uid)
+    .collection("attempts")
+    .add({
       name: window.username,
       score: score,
       total: selectedQuestions.length,
       time: new Date().toLocaleString()
-  });
+    });
 }
 
 function restartQuiz() {
