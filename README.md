@@ -56,13 +56,13 @@ quiz-app/
 1. Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/quiz-app.git
+git clone https://github.com/AAKASH22269796/selfquiz
 ```
 
 2. Open the project folder:
 
 ```
-cd quiz-app
+cd selfquiz
 ```
 
 3. Run:
