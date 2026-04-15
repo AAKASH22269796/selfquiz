@@ -93,6 +93,12 @@ let selectedQuestions= [];
 let userAnswers = [];
 
 function startQuiz() {
+  let name = document.getElementById("username").value;
+  if (!name) {
+    alert("Enter your name");
+    return;
+  }
+window.username = name;
   document.getElementById("timer").style.display = "block";
   document.getElementById("timer").style.color = "white";
   let n = parseInt(document.getElementById("num").value);
@@ -184,6 +190,12 @@ function submitQuiz() {
     document.getElementById("result").innerText =
         "Score: " + score + "/" + selectedQuestions.length;
     document.getElementById("retry-btn").style.display = "block";
+    db.collection("results").add({
+      name: window.username,
+      score: score,
+      total: selectedQuestions.length,
+      time: new Date().toLocaleString()
+  });
 }
 
 function restartQuiz() {
