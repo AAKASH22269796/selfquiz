@@ -11,89 +11,89 @@ let timerInterval;
 
 let allQuestions = [
 
-/* -------- SET 1 -------- */
-{question:"The Global Goals were adopted by all United Nations member states in ___ as a universal call to action to end poverty, protect the planet and ensure peace and prosperity by ___.",options:["2025, 2080","2020, 2060","2012, 2050","2015, 2030"],answer:3},
-{question:"Which of the following is true?",options:["The SDGs are a bold commitment to solely increase the GDP of India","Dealing with climate change has no impact on gender equality","Success in one SDG affects success of the others","Only 14 out of the 17 SDGs are interconnected"],answer:2},
-{question:"In June 1992, at the Earth Summit in Rio de Janeiro, Brazil, more than 178 countries adopted ___.",options:["Agenda 21","Millennium Development Goals","Agenda 51","Sustainable Development Goals"],answer:0},
-{question:"Brundtland Report was released in 1987 by the WCED. WCED stands for ___.",options:["World Commission on Environment Degradation","World Commission on Environment and Development","World Committee on Environmental Depletion","World Commission on Earth Development"],answer:1},
-{question:"Extreme poverty means living on less than ___ a day.",options:["$1.25","$4.25","$10.25","$100.25"],answer:0},
-{question:"___ poverty measures reveal who is poor and how they are poor.",options:["Unidimensional","Bidirectional","Multidimensional","Multidirectional"],answer:2},
-{question:"SDG 2 aims to end all forms of ___ by 2030.",options:["crime","hunger and malnutrition","pollution","drought"],answer:1},
-{question:"Which of the following is not one of the indicators of the Global Hunger Index?",options:["Prevalence of wasting and stunting in children under 5 years","Under-5 child mortality rate","Proportion of undernourished in the population","Proportion of obese people in the population"],answer:3},
-{question:"As per Ministry of Housing and Urban Affairs, 135 lpcd has been suggested for urban water supply. For rural areas, 55 lpcd has been fixed under ___.",options:["Jal Jeevan Mission","Jal Shakti Mission","Jal Protection Mission","Jal Janta Mission"],answer:0},
-{question:"Forests cover about ___ percent of the Earth’s surface.",options:["5","85","30","50"],answer:2},
+/* -------- SET 1 (Week 1) [cite: 4] -------- */
+{question: "The Global Goals were adopted by all United Nations member states in ___ as a universal call to action to end poverty, protect the planet and ensure that all people enjoy peace and prosperity by ___.", options: ["2025, 2080", "2020, 2060", "2012, 2050", "2015, 2030"], answer: 3}, // [cite: 8, 9, 10, 11, 12, 13]
+{question: "Which of the following is true?", options: ["The SDGs are a bold commitment to solely increase the GDP of India", "Dealing with climate change has no impact on gender equality", "Success in one SDG affects success of the others", "Only 14 out of the 17 SDGs are interconnected"], answer: 2}, // [cite: 16, 17, 18, 19, 20, 21]
+{question: "In June 1992, at the Earth Summit in Rio de Janeiro, Brazil, more than 178 countries adopted ___", options: ["Agenda 21", "Millennium Development Goals", "Agenda 51", "Sustainable Development Goals"], answer: 0}, // [cite: 29, 30, 31, 32, 33, 34]
+{question: "Brundtland Report was released in 1987 by the WCED. WCED stands for ___", options: ["World Commission on Environment Degradation", "World Commission on Environment and Development", "World Committee on Environmental Depletion", "World Commission on Earth Development"], answer: 1}, // [cite: 37, 38, 39, 40, 41, 42]
+{question: "Extreme poverty means living on less than ___ a day.", options: ["$1.25", "$4.25", "$10.25", "$100.25"], answer: 0}, // [cite: 49, 50, 51, 52, 53, 54]
+{question: "___ poverty measures reveal who is poor and how they are poor.", options: ["Unidimensional", "Bidirectional", "Multidimensional", "Multidirectional"], answer: 2}, // [cite: 58, 59, 60, 61, 62, 63, 64]
+{question: "SDG 2 aims end all forms of ___ by 2030.", options: ["crime", "hunger and malnutrition", "pollution", "drought"], answer: 1}, // [cite: 72, 73, 74, 75, 76, 77]
+{question: "Which of the following is not one of the indicators of the Global Hunder Index?", options: ["prevalence of wasting and stunting in children under 5 years", "under 5 child mortality rate", "proportion of undernourished in the population", "proportion of obese people in the population"], answer: 3}, // [cite: 80, 81, 82, 83, 84, 85]
+{question: "As per Ministry of Housing and Urban Affairs, 135 litre per capita per day (lpcd) has been suggested as the benchmark for urban water supply. For rural areas, a minimum service delivery of 55 lpcd has been fixed under ___", options: ["Jal Jeevan Mission", "Jal Shakti Mission", "Jal Protection Mission", "Jal Janta Mission"], answer: 0}, // [cite: 92, 93, 94, 95, 96, 97, 98]
+{question: "Forests cover about ___ percent of the Earth's surface", options: ["5", "85", "30", "50"], answer: 2}, // [cite: 102, 103, 104, 105, 106, 107]
 
-/* -------- SET 2 -------- */
-{question:"Which of the following is a characteristic of ESD?",options:["It is not locally relevant","It promotes learning only for children","It is interdisciplinary","It uses only two pedagogical techniques"],answer:2},
-{question:"The Declaration on the Right to Development (1986) established that everyone is entitled to participate in and enjoy:",options:["Only economic and social development","Economic, political, psychological and community development","Economic, social, cultural and political development","Only cultural development"],answer:2},
-{question:"Text-based methods for assessing ESD programs can be improved by using ___.",options:["Interpretive methodologies","Strict curriculum","Only quantitative techniques","Only qualitative methods"],answer:0},
-{question:"SDGs are for the following except ___.",options:["People","Practice","Planet","Partnership"],answer:1},
-{question:"Policies like employment and labor rights are called ___ policies.",options:["Post-regulation","Self-care","Forceful","Pre-distributive"],answer:3},
-{question:"Which organizations developed HRE framework?",options:["Danish Institute of Human Rights","Office of the High Commissioner for Human Rights","Both A and B","Neither A nor B"],answer:2},
-{question:"___ plays a role in peace education.",options:["Schools","Parents","Community","All of the given"],answer:3},
-{question:"The enterprise of education at its most profound level is ___.",options:["Discriminatory","Selective","Restricted","Transformative"],answer:3},
-{question:"UNESCO’s survey identified ___ as a top global challenge.",options:["Climate change","Hunger","Unemployment","Mental health"],answer:0},
-{question:"Education for sustainable development improves life ___.",options:["Only now","Only future","Now and future","Only past"],answer:2},
+/* -------- SET 2 (Week 2) [cite: 112] -------- */
+{question: "Which of the following is a characteristic of ESD as described in the framework?", options: ["It is not locally relevant", "It promotes learning only for children", "It is interdisciplinary", "It uses only two pedagogical techniques"], answer: 2}, // [cite: 116, 117, 118, 119, 120, 121]
+{question: "The Declaration on the Right to Development (1986) established that everyone is entitled to participate in and enjoy:", options: ["only economic and social development", "economic, political, psychological and communist development", "economic, social, cultural and political development", "only cultural development"], answer: 2}, // [cite: 124, 125, 126, 127, 128, 129]
+{question: "Text based methods for assessing ESD programs can be improved by using ___", options: ["interpretive methodologies", "strict curriculum", "only quantitative techniques", "only qualitative methods"], answer: 0}, // [cite: 137, 138, 139, 140, 141, 142]
+{question: "SDGS are for the following except ___", options: ["people", "practice", "planet", "partnership"], answer: 1}, // [cite: 145, 146, 147, 148, 149, 150]
+{question: "Policies like employment and labor rights, care and family leves, and financial regulation are often called the ___ policies.", options: ["post-regulation", "self-care", "forceful", "pre-distributive"], answer: 3}, // [cite: 153, 154, 155, 156, 157, 158]
+{question: "Which of the following is involved in the development of the HRE indicator framework to measure progress on national implementation of human rights education.", options: ["Danish Institute of Human Rights", "The Office of the High Commissioner for Human Rights", "Both A and B", "Neither A nor B"], answer: 2}, // [cite: 166, 167, 168, 169, 170, 171]
+{question: "___ plays a role in peace education.", options: ["schools", "parents", "community", "all the given"], answer: 3}, // [cite: 174, 175, 176, 177, 178, 179]
+{question: "The enterprise of education at its most profound level is ___", options: ["discriminatory", "selective", "restricted", "transformative"], answer: 3}, // [cite: 182, 183, 184, 185, 186, 187]
+{question: "UNESCO's World in 2030 survey revealed that respondents see ___ as one of the top global challenges", options: ["climate change", "hunger", "unemployment", "mental health"], answer: 0}, // [cite: 194, 195, 196, 197, 198, 199]
+{question: "Education for sustainable development and peace develops people's skills to take actions that improve our quality of life ___", options: ["only now", "only for the future", "for now and for the future", "only for the past"], answer: 2}, // [cite: 203, 204, 205, 206, 207, 208]
 
-/* -------- SET 3 -------- */
-{question:"Global citizenship means individuals are part of ___ networks.",options:["Multiple","Diverse","Local and non-local","All of the given"],answer:3},
-{question:"A global citizen ___.",options:["Is not aware of world","Is confused","Takes active role in community","Does not care"],answer:2},
-{question:"Global citizenship education is based on ___ domains.",options:["Three","Two","Four","Seven"],answer:0},
-{question:"UNESCO Category 1 institute in Asia-Pacific is ___.",options:["MGEIN","MGIER","MGIEP","MGOEL"],answer:2},
-{question:"SDG 4.7 promotes a ___ agenda.",options:["Regional","Behavioral","Political","Humanistic"],answer:3},
-{question:"SEL stands for ___.",options:["Sustainable education learning","Environmental learning","Social and emotional learning","Economic learning"],answer:2},
-{question:"Teacher roles include ___.",options:["Facilitator","Guide","Role model","All of the given"],answer:3},
-{question:"Target ___ protects cultural heritage.",options:["9.5","1.5","2.3","11.4"],answer:3},
-{question:"TVET promotes ___ in member states.",options:["Green TVET","Blue TVET","Orange TVET","White TVET"],answer:0},
-{question:"Which statement is false about green jobs?",options:["They preserve environment","They ensure workers’ rights","They exist only in agriculture","They are accessible"],answer:2},
+/* -------- SET 3 (Week 3) [cite: 216] -------- */
+{question: "Global citizenship is a belief that individuals are members of ___ networks.", options: ["multiple", "diverse", "local and non-local", "all of the given"], answer: 3}, // [cite: 220, 221, 222, 223, 224, 225]
+{question: "A global citizen ___", options: ["is not aware of the wider world", "is confused about their place in the world", "takes an active role in their community", "do not care much about the planet"], answer: 2}, // [cite: 228, 229, 230, 231, 232, 233]
+{question: "Global citizenship education is based on ___ domains of learning.", options: ["three", "two", "four", "seven"], answer: 0}, // [cite: 241, 242, 243, 244, 245, 246]
+{question: "___ is UNESCO's first Categogory 1 education-releated institute in the Asia-Pacific region.", options: ["MGEIN", "MGIER", "MGIEP", "MGOEL"], answer: 2}, // [cite: 250, 251, 252, 253, 254, 255, 256, 257]
+{question: "SDG target 4.7 rearticulates a ___ agenda for education.", options: ["regional", "behavioral", "political", "humanistic"], answer: 3}, // [cite: 260, 261, 262, 263, 264, 265]
+{question: "SEL stands for ___", options: ["Sustainable education and learning", "Social and environmental learning", "Social and emotional learning", "Sustainable and economic learning"], answer: 2}, // [cite: 270, 273, 274]
+{question: "Which of the following is a role taken by a teacher in education for sustainable development?", options: ["facilitator", "guide", "role model", "all of the given"], answer: 3}, // [cite: 279, 280, 281, 282, 283, 284]
+{question: "Target ___ calls for strengthening efforts to protect and safeguard the world's cultural and natural heritage.", options: ["9.5", "1.5", "2.3", "11.4"], answer: 3}, // [cite: 287, 288, 289, 290, 291, 292, 293, 294]
+{question: "The UNESCO International Centre for Technical and Vocational Education and Training enables ___ in member states.", options: ["green TVET", "blue TVET", "orange TVET", "white TVET"], answer: 0}, // [cite: 301, 302, 303, 304, 305, 306, 307, 308]
+{question: "Which of the following statements is not true?", options: ["green jobs contribute to preserving environmental quality", "green jobs ensure workers' rights", "green jobs are only found in the agriculture sector", "green jobs must be accessible to all"], answer: 2}, // [cite: 311, 312, 313, 314, 315, 316]
 
-/* -------- SET 4 -------- */
-{question:"Poor infrastructure can cause hunger in a country.",options:["True","False"],answer:0},
-{question:"In high income countries, hunger is mainly caused due to ___.",options:["Low GDP","Lack of food access","Poor transport","Lack of jobs"],answer:3},
-{question:"Hunger is ___.",options:["Cause of war","Effect of war","Both cause and effect","Neither"],answer:2},
-{question:"___ are most vulnerable to hidden hunger.",options:["Adults","Infants","Adolescents","Elderly"],answer:1},
-{question:"Desertification is a result of ___.",options:["Drought","Deforestation","Bad agriculture","All of the given"],answer:3},
-{question:"India initiative for hunger is ___.",options:["One Nation One Plate","One Nation One Hunger","No Ration Card","One Nation One Ration Card"],answer:3},
-{question:"MGNREGA has ___.",options:["Reduced wages","Increased gaps","Reduced food access","Reduced distress migration"],answer:3},
-{question:"Wheat productivity suffers if ___.",options:["Temperature rises","No change","Falls","None"],answer:0},
-{question:"Yam cultivation is called ___.",options:["Diversifying food basket","Restricting food basket","Completing food basket","Wasting food"],answer:0},
-{question:"Home gardening ensures food security.",options:["True","False"],answer:0},
+/* -------- SET 4 (Week 4) [cite: 529] -------- */
+{question: "GESO stands for ___", options: ["Green Education for Sustainable Occupation", "Green Enhanced Sustainable Occupation", "Green Enhanced Skills Occupation", "None of the above"], answer: 2}, // [cite: 531, 533, 534, 535, 536, 537]
+{question: "The classification of occupations into GIDO, GESO and GNEO is given by US National Center for ___", options: ["G*NET", "A*NET", "I*NET", "O*NET"], answer: 3}, // [cite: 540, 541, 542, 543, 544, 545]
+{question: "The International Framework for Greening TVET consists of the following tiers, except ___", options: ["Breaking TVET institutions", "Transforming TVET institutions", "Formulating National Policies", "Forming International Alliance"], answer: 0}, // [cite: 552, 553, 554, 555, 556]
+{question: "Energy, water and waste management comes under the ___ dimension of Greening TVET.", options: ["Green research", "Green culture", "Green teaching", "Green campus"], answer: 3}, // [cite: 559, 560, 561, 562, 563, 564, 565]
+{question: "Industry-institute interaction is an indicator of ___", options: ["green house", "green teaching", "green campus", "green curriculum"], answer: 3}, // [cite: 572, 573, 574, 575, 576, 577]
+{question: "Sustainable entrepreneurship includes ___", options: ["social entrepreneurship", "eco-preneurship", "intra-preneurship", "all of the given"], answer: 3}, // [cite: 580, 581, 582, 583, 584, 585]
+{question: "ESD requires ___ learning methods.", options: ["participatory", "passive", "rigid", "static"], answer: 0}, // [cite: 589, 592, 593, 594, 595, 597, 598]
+{question: "Which of the following is a transversal competency?", options: ["creativity", "empathy", "systems thinking", "all of the given"], answer: 3}, // [cite: 601, 602, 603, 604, 605, 606]
+{question: "___ is the ability to create good relationships and adapt to different social situations.", options: ["emotional fitness", "mental health", "social health", "physical health"], answer: 2}, // [cite: 613, 614, 615, 616, 617, 618]
+{question: "Sustainable health is ___", options: ["a curative approach", "only about the body", "a balance of mind, body and spirit", "only about mental health"], answer: 2}, // [cite: 621, 622, 623, 624, 625, 626]
 
-/* -------- SET 5 -------- */
-{question:"Which of the following is a type of energy?",options:["Fossil fuels","Nuclear power","Traditional biomass","All of the given"],answer:3},
-{question:"IPCC I stands for ___.",options:["Industrial","Internal","International","Intergovernmental"],answer:3},
-{question:"Nuclear fuel causes ___.",options:["Land improvement","Air and water pollution","Biodiversity increase","All"],answer:1},
-{question:"China air pollution mainly from ___.",options:["Cooking","Coal burning","Transport","Forest burning"],answer:1},
-{question:"Japan city target after disaster was ___.",options:["100 net energy","1 net energy","Million net energy","Zero net energy"],answer:3},
-{question:"Energy democracy comes from ___ movement.",options:["Hunger","Revolt","Climate revolt","Climate justice"],answer:3},
-{question:"Paris Agreement is about ___.",options:["Climate change","Education","Poverty","None"],answer:0},
-{question:"NAPCC includes ___ missions.",options:["8","2","100","78"],answer:0},
-{question:"Stubble burning months are ___.",options:["October-November","May-June","Jan-Feb","July-Aug"],answer:0},
-{question:"Stubble burning is ___.",options:["Intentional","Natural","Healthy","Paper burning"],answer:0},
+/* -------- SET 5 (Week 5) [cite: 632] -------- */
+{question: "Siddha comes under the ___", options: ["public health sector", "voluntary health agencies", "indigenous system of medicine", "private health sector"], answer: 2}, // [cite: 635, 636, 637, 638, 639, 640]
+{question: "Which of the following is not a problem of healthcare infrastructure in India?", options: ["shortage of staff", "skewed favor to urban areas", "no proper regulatory mechanism", "standard procedures in all regions"], answer: 3}, // [cite: 643, 644, 645, 646, 647, 648]
+{question: "Which of the following is a health system building block as suggested by WHO?", options: ["Economic growth", "Access to public transport", "Politics", "Service delivery"], answer: 3}, // [cite: 656, 657, 658, 659, 660, 661]
+{question: "An ecologically sustainable approach broadens the definition of ___", options: ["objective", "outcome", "cost", "value"], answer: 3}, // [cite: 664, 665, 666, 667, 668, 669]
+{question: "A ___ is an environment in which data of medical interest can be stored and made easily available.", options: ["health repository", "health bank", "health bag", "health grid"], answer: 3}, // [cite: 677, 678, 679, 680, 681, 682]
+{question: "The POSHAN Abhiyan in India aims to improve nutritional outcomes for ___", options: ["children", "lactating mothers", "pregnant women", "all of the given"], answer: 3}, // [cite: 685, 686, 687, 688, 689, 690]
+{question: "Sus-QI stands for ___", options: ["Sustainable quality improvement", "Sustainable quality improvisation", "Sustainable quantity improvement", "Sustainable quantity improvisation"], answer: 0}, // [cite: 697, 698, 699, 700]
+{question: "Which of the following is not a stage of Sus-QI?", options: ["set goals", "measure impacts", "design the improvement effort", "ignore the system"], answer: 3}, // [cite: 703, 704, 705, 706, 707, 708]
+{question: "Food insecurity is measured on the ___", options: ["FIES", "FAIS", "FIET", "FAIR"], answer: 0}, // [cite: 715, 716, 717, 718, 719, 720]
+{question: "The UN lists ___ levels of food security for any given country.", options: ["5", "4", "3", "2"], answer: 0}, // [cite: 723, 724, 725, 726, 727, 728, 729]
 
-/* -------- SET 6 -------- */
-{question:"GESO stands for ___.",options:["Green Education for Sustainable Occupation","Green Enhanced Sustainable Occupation","Green Enhanced Skills Occupation","None of the above"],answer:2},
-{question:"Classification GIDO GESO GNEO by ___.",options:["GNET","ANET","INET","ONET"],answer:3},
-{question:"Greening TVET except ___.",options:["Breaking institutions","Transforming institutions","Policies","Alliance"],answer:0},
-{question:"Waste management belongs to ___.",options:["Green research","Green culture","Green teaching","Green campus"],answer:3},
-{question:"Industry link shows ___.",options:["Green house","Green teaching","Green campus","Green curriculum"],answer:3},
-{question:"Sustainable entrepreneurship includes ___.",options:["Social","Eco","Intra","All"],answer:3},
-{question:"ESD requires ___ learning.",options:["Participatory","Passive","Rigid","Static"],answer:0},
-{question:"Transversal competency is ___.",options:["Creativity","Empathy","Systems thinking","All"],answer:3},
-{question:"Social health is ___.",options:["Emotional","Mental","Social","Physical"],answer:2},
-{question:"Sustainable health is ___.",options:["Curative","Body","Balance of mind body spirit","Mental"],answer:2},
+/* -------- SET 6 (Week 6) [cite: 322] -------- */
+{question: "Poor infrastructure can cause hunger in a country.", options: ["True", "False"], answer: 0}, // [cite: 324, 326, 327, 328]
+{question: "In high income countries, hunger is mainly caused due to poverty that results from ___", options: ["low GDP of the country", "lack of access to food", "poor public transport infrastructure", "lack of jobs"], answer: 3}, // [cite: 331, 332, 333, 334, 335, 336]
+{question: "Which of the following is true about hunger?", options: ["It is a cause of war", "It is an effect of war", "It is both a cause and effect of war", "It is neither a cause nor an effect of war"], answer: 2}, // [cite: 342, 344, 345, 346, 347, 348]
+{question: "___ are most vulnerable to the harmful effects of hidden hunger.", options: ["adults", "infants", "adolescents", "elderly"], answer: 1}, // [cite: 351, 352, 353, 354, 355, 356, 357]
+{question: "Desertification is typically a result of ___", options: ["drought", "deforestation", "inappropriate agriculture", "all of the given"], answer: 3}, // [cite: 365, 366, 367, 368, 369, 370]
+{question: "Which of the following is a key initiative in India for the problem of hunger?", options: ["One Nation, One Plate", "One Nation, One Hunger", "One Nation, No Ration Card", "One Nation, One Ration Card"], answer: 3}, // [cite: 373, 374, 375, 376, 377, 378]
+{question: "In the past, MGNREGA has ___", options: ["decreased rural wages", "increased gender wage gaps", "enabled poor access to food", "reduced distress migration from rural areas"], answer: 3}, // [cite: 386, 387, 388, 389, 390, 391]
+{question: "Wheat productivity can suffer if ___", options: ["temperature rises", "temperature does not change", "temperature falls", "none of the given"], answer: 0}, // [cite: 394, 395, 396, 397, 398, 399]
+{question: "Bringing forgotten and neglected foods like yam into cultivation and onto the market is called ___", options: ["diversifying food basket", "restricting food basket", "completing food box", "wasting food basket"], answer: 0}, // [cite: 407, 408, 409, 410, 411, 412]
+{question: "Home gardening has been proven as a reliable source to supplement food and nutritional security at the household level.", options: ["True", "False"], answer: 0}, // [cite: 415, 416, 417, 418]
 
-/* -------- SET 7 -------- */
-{question:"Siddha belongs to ___.",options:["Public health","Voluntary agencies","Indigenous medicine","Private sector"],answer:2},
-{question:"Not healthcare problem?",options:["Staff shortage","Urban bias","No regulation","Standard procedures"],answer:3},
-{question:"WHO building block is ___.",options:["Growth","Transport","Politics","Service delivery"],answer:3},
-{question:"Sustainability broadens ___.",options:["Objective","Outcome","Cost","Value"],answer:3},
-{question:"Health data storage is ___.",options:["Repository","Bank","Bag","Grid"],answer:3},
-{question:"POSHAN improves ___.",options:["Children","Mothers","Pregnant women","All"],answer:3},
-{question:"Sus-QI stands for ___.",options:["Sustainable quality improvement","Quality improv","Quantity","Quantity improv"],answer:0},
-{question:"Not stage of Sus-QI?",options:["Set goals","Measure impacts","Design effort","Ignore system"],answer:3},
-{question:"Food insecurity measured by ___.",options:["FIES","FAIS","FIET","FAIR"],answer:0},
-{question:"Food security levels are ___.",options:["5","4","3","2"],answer:0}
+/* -------- SET 7 (Week 7) [cite: 424] -------- */
+{question: "Which of the following is a type of energy?", options: ["fossil fuels", "nuclear power", "traditional biomass", "all of the given"], answer: 3}, // [cite: 427, 428, 429, 430, 431, 432]
+{question: "In IPCC by UN, I stands for ___", options: ["Industrial", "Internal", "International", "Intergovernmental"], answer: 3}, // [cite: 435, 436, 437, 438, 439, 440]
+{question: "The extraction, transport and refinement of nuclear fuels results in ___", options: ["improvement of land from mining", "pollution of air and water", "replenishment of biodiversity", "all of the given"], answer: 1}, // [cite: 446, 447, 448, 449, 450]
+{question: "The greatest contributor to air pollution in China is ___", options: ["cooking and heating", "coal burning", "transport", "forest burning"], answer: 1}, // [cite: 453, 454, 455, 456, 457, 458]
+{question: "In the wake of tsunami and nuclear disaster following severe earthquake in 2011, a city in Japan set a target for ___ by 2022.", options: ["hundred net energy", "one net energy", "million net energy", "zero net energy"], answer: 3}, // [cite: 465, 466, 467, 468, 469, 470, 471]
+{question: "The term 'energy democracy' grew out of the ___ movement.", options: ["hunger justice", "hunger revolt", "climate revolt", "climate justice"], answer: 3}, // [cite: 474, 475, 476, 477, 478, 479, 480]
+{question: "The Paris Agreement is a legally binding treaty on ___ adopted by 196 parties at COP 21 in 2015.", options: ["climate change", "education", "poverty", "none of the given"], answer: 0}, // [cite: 488, 489, 490, 491, 492, 493, 494]
+{question: "The Government of India launched the NAPCC in 2008 outlining ___ National Missions on climate change.", options: ["8", "2", "100", "78"], answer: 0}, // [cite: 497, 498, 500, 501, 502, 503, 504]
+{question: "Stubble burning usually takes place in the months of ___", options: ["October-November", "May-June", "January-February", "July-August"], answer: 0}, // [cite: 511, 512, 513, 514, 515, 516]
+{question: "Stubble burning is ___", options: ["intentional", "natural", "healthy for air quality", "related to burning of paper"], answer: 0} // [cite: 519, 520, 521, 522, 523, 524]
 
 ];
 
