@@ -103,33 +103,75 @@ label:hover {
   font-size: 22px;
   margin-top: 10px;
 }
+/* ===== DARK MODE (IMPROVED) ===== */
+
 body.dark {
   background: #121212;
-  color: #eee;
+  color: #e0e0e0;
 }
 
+/* Question card */
 body.dark .question {
   background: #1e1e1e;
-  color: #eee;
+  color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-body.dark label:hover {
-  background: #333;
-}
-
-body.dark #timer {
-  background: linear-gradient(135deg, #232526, #414345);
-}
-
-body.dark #result {
-  color: #fff;
-}
+/* Options */
 .option {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   margin: 8px 0;
   cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+body.dark .option:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Label hover */
+body.dark label:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Timer (improved look) */
+body.dark #timer {
+  background: linear-gradient(135deg, #232526, #414345);
+  padding: 8px 14px;
+  border-radius: 10px;
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Result text */
+body.dark #result {
+  color: #ffffff;
+}
+
+/* ===== RESULT COLORS FIX ===== */
+
+/* Correct answer */
+body.dark .correct {
+  background-color: #1f3d2b !important;
+  border-left: 6px solid #28a745;
+  color: #a8ffb0;
+}
+
+/* Wrong answer */
+body.dark .wrong {
+  background-color: #4a1f24 !important;
+  border-left: 6px solid #dc3545;
+  color: #ffb3b3;
+}
+
+/* Correct answer text */
+body.dark .correct-answer {
+  color: #00ffcc;
+  font-weight: bold;
 }
 
 .option input {
