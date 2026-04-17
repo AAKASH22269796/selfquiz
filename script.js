@@ -93,7 +93,71 @@ let allQuestions = [
 {question: "The Paris Agreement is a legally binding treaty on ___ adopted by 196 parties at COP 21 in 2015.", options: ["climate change", "education", "poverty", "none of the given"], answer: 0}, // [cite: 488, 489, 490, 491, 492, 493, 494]
 {question: "The Government of India launched the NAPCC in 2008 outlining ___ National Missions on climate change.", options: ["8", "2", "100", "78"], answer: 0}, // [cite: 497, 498, 500, 501, 502, 503, 504]
 {question: "Stubble burning usually takes place in the months of ___", options: ["October-November", "May-June", "January-February", "July-August"], answer: 0}, // [cite: 511, 512, 513, 514, 515, 516]
-{question: "Stubble burning is ___", options: ["intentional", "natural", "healthy for air quality", "related to burning of paper"], answer: 0} // [cite: 519, 520, 521, 522, 523, 524]
+{question: "Stubble burning is ___", options: ["intentional", "natural", "healthy for air quality", "related to burning of paper"], answer: 0}, // [cite: 519, 520, 521, 522, 523, 524]
+
+/* -------- SET 8 (Week 8) -------- */
+{question: "The Okayama Commitment is from ___.", options: ["Russia", "South Korea", "North Korea", "Japan"], answer: 3}, //
+{question: "Which of the following is a policy support mechanism of Okayama Commitment?", options: ["Taking money", "Content development", "Exploitation of resources", "None of the given"], answer: 1}, //
+{question: "Education is related to SDG 9 such that ___.", options: ["education helps in skills required to build resilient infrastructure", "education enhances skills to use natural resources more sustainably", "education is critical to lifting people out of poverty", "education helps reduce gender gaps"], answer: 0}, //
+{question: "The frame model structures sustainability competencies into ___ goal dimensions.", options: ["8", "3", "11", "45"], answer: 1}, //
+{question: "Sustainability issues must be looked at through a ___ approach.", options: ["isolated thinking", "independent thinking", "silos thinking", "systems thinking"], answer: 3}, //
+{question: "Technology and Science can alone solve all our sustainability problems.", options: ["True", "False"], answer: 1}, //
+{question: "GAP in the context of ESD stands for ___.", options: ["Global Action Programme", "Great Actvity Plan", "Global Attention Programme", "Great Action Policy"], answer: 0}, //
+{question: "___ competency is the ability to understand and evaluate multiple futures.", options: ["anticipatory", "normative", "strategic", "collaborative"], answer: 0}, //
+{question: "The ability to question norms is ___ competency.", options: ["critical thinking", "normative", "anticipatory", "self-awareness"], answer: 0}, //
+{question: "Action-oriented learning draws on Kolb's concept of ___.", options: ["experiential learning", "experimental learning", "rote learning", "direct learning"], answer: 0}, //
+
+
+/* -------- SET 9 (Week 9) -------- */
+{question: "Activities like fish bowl discussion help ___.", options: ["passive thinking", "critical and reflexive thinking", "rote-memory", "all of the given"], answer: 1}, //
+{question: "Which of the following is not a vision-building exercise?", options: ["scenario analysis", "classroom teaching", "science fiction thinking", "dystopian storytelling"], answer: 1}, //
+{question: "The ability to hold contradictory thoughts and feelings is an ___ competency.", options: ["intellectual", "interpersonal", "intrapersonal", "institutional"], answer: 2}, //
+{question: "___ intelligences is proposed by Howard Gardner.", options: ["multiple", "singular", "double", "triple"], answer: 0}, //
+{question: "___ intelligence refers to using one's body in skilled ways.", options: ["kinesthetic", "musical", "naturalist", "spatial"], answer: 0}, //
+{question: "The idea of big transformation implies that changes in individual action are intertwined with ___.", options: ["reorganization of self", "reorganization of societal structures", "ignorance of others", "none of the given"], answer: 1}, //
+{question: "In ___ learning, learners start to question all the things they knew to make room for new insights and information.", options: ["transformative", "transactional", "trivial", "trans-disciplinary"], answer: 0}, //
+{question: "Which of the following is a key principle of adult education?", options: ["need to know why", "guilt", "boredom", "none of the given"], answer: 0}, //
+{question: "___ Sustainable Development is a process through which people influence and share control over development initiatives, decisions and resources that affects them.", options: ["Internal", "Societal", "Participatory", "Transformational"], answer: 2}, //
+{question: "___ is the common regulatory body for higher education in India.", options: ["HECI", "WHO", "AIIMS", "None of the given"], answer: 0},//
+
+
+/* -------- SET 10 (Week 10) -------- */
+{question: "Sustainable leaders look at immediate, short-term gains.", options: ["True", "False"], answer: 1}, //
+{question: "The need of the hour is to have leaders who ___.", options: ["focus only on business profit", "focus only on building technical solutions", "take a holistic approach", "none of the given"], answer: 2}, //
+{question: "Which of the following is a part of the 3Ps of triple bottom line?", options: ["Profit", "Passion", "Party", "Pivot"], answer: 0}, //
+{question: "Organizations need leaders who create value for ___.", options: ["internal stakeholders", "external stakeholders", "oneself", "all stakeholders"], answer: 3}, //
+{question: "The sustainability mindset involves ___.", options: ["transparency", "presencing", "integrity", "all of the given"], answer: 3}, //
+{question: "Finding ways to maintain one's own and others' energy is an unsustainable leadership practice.", options: ["True", "False"], answer: 1}, //
+{question: "Systems thinking is often highlighted by the ability to ___.", options: ["zoom in", "zoom out", "zoom in and out", "none of the given"], answer: 2}, //
+{question: "Practicing consciousness awareness includes ___.", options: ["ignoring self with others", "forgetting about what has happened and moving on", "living in denial", "authentic interactions"], answer: 3}, //
+{question: "Leadership ___ is the last challenge of leadership; of letting go, moving on, and planning for one's own obsolescence.", options: ["succession", "regression", "formation", "integration"], answer: 0}, //
+{question: "___ leadership is also called missionary leadership and is different from quiet leadership.", options: ["participative", "servant", "radical", "inspirational"], answer: 2}, //
+
+
+/* -------- SET 11 (Week 11) -------- */
+{question: "There is one universal curriculum to become a sustainable leader.", options: ["True", "False"], answer: 1}, //
+{question: "A sustainable leader has a ___ decision-making style.", options: ["forceful", "autocratic", "selfish", "consensual"], answer: 3}, //
+{question: "A sustainable leader must have awareness of ___ contexts.", options: ["ecological", "economic", "political", "all of the given"], answer: 3}, //
+{question: "The 'results' component of sustainable leadership relates with the ___ dimension.", options: ["instituional", "social", "environmental", "economic"], answer: 3}, //
+{question: "___ India gives a theory U that consists of aspects like co-initiating, co-sensing and co-evolving among others.", options: ["HEAD", "SAID", "GEAD", "LEAD"], answer: 3}, //
+{question: "The ___ component in theory 'U' entails prototyping the new.", options: ["co-evolving", "co-initiating", "co-sensing", "co-creating"], answer: 3}, //
+{question: "Which of the following factor does not aid in becoming a global leader?", options: ["willingness to stay in one's comfort zone", "undesirable circumstances like poverty", "confidence to embrace risk", "willingness to learn from failure"], answer: 0}, //
+{question: "According to Maxwell, there are ___ levels of leadership.", options: ["15", "25", "50", "5"], answer: 3}, //
+{question: "The ___, in relation to their Global Leadership Fellowship program, describes global leaders as dynamic, engaged and driven individuals who possess a high degree of intellectual curiosity and service-oriented humility; an entrepreneur in the global public interest with a profound sense of purpose regardless of the scale and scope of the challenge.", options: ["World Health Organization", "World Labor Organization", "World Economic Forum", "World Political Forum"], answer: 2}, //
+{question: "SDG ___ is to make cities and human settlements inclusive, safe, resilient, and sustainable.", options: ["2", "10", "11", "5"], answer: 2}, //
+
+
+/* -------- SET 12 (Week 12) -------- */
+{question: "___resources are those that exist in the absence of human intervention.", options: ["Artificial", "Natural", "Fake", "Real"], answer: 1}, //
+{question: "The food sector accounts for around ___ percent of total greenhouse gas emissions.", options: ["3", "22", "100", "90"], answer: 1}, //
+{question: "Which of the following is not a solution for natural resource depletion?", options: ["use less renewable energy", "promote sustainable fishing growth", "reduce food waste", "treat wastewater before discharging"], answer: 0}, //
+{question: "In order to support reform on green fiscal policy, UN Environment has established the ____ in partnership with the International Monetary Fund.", options: ["Green Fiscal Policy Network", "Blue Fiscal Policy Network", "Green Fishery Policy Network", "Green Fiscal Policy Natural"], answer: 0}, //
+{question: "As responsible consumers, we should ask ourselves \"___\" before buying anything.", options: ["do I really need it?", "how long will I use it?", "can I borrow it from someone I know?", "all of the given"], answer: 3}, //
+{question: "A bulb thrown out after usage forms ___.", options: ["wet waste", "valuable waste", "responsible waste", "e-waste"], answer: 3}, //
+{question: "SDG _____ seeks to promote international trade, and help developing countries increase their exports to ensure a universal rules-based and equitable trading system that is fair, open and beneficial to all.", options: ["17", "2", "6", "11"], answer: 0}, //
+{question: "According to Gandhiji, wealth should be used for _____.", options: ["the betterment of the humanity", "personal indulgence", "conflicts", "politics"], answer: 0}, //
+{question: "The _____ initiated and spearheaded by Gandhiji is the preeminent prototype of small and cottage industries. Strengthening village economy, and thus, reducing excessive urbanization can make human settlements safe, resilient and sustainable.", options: ["Khadi Movement", "Salt March", "Cotton Movement", "Non-violent Protest"], answer: 0}, //
+{question: "_________ is the ability of a system to absorb disturbances & retain its basic function and structure.", options: ["resilience", "gratitude", "mindfulness", "sustainable consumption"], answer: 0} //
 
 ];
 
