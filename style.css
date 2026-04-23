@@ -1,10 +1,12 @@
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea, #764ba2);
   margin: 0;
   padding: 20px;
   color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -13,22 +15,86 @@ h1 {
   margin-bottom: 20px;
 }
 
-#start-screen {
-  text-align: center;
-  margin-bottom: 20px;
+/* ===== NEW START BOX STYLES ===== */
+.start-box {
+  background: white;
+  padding: 25px;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-sizing: border-box;
 }
 
-input {
+body.dark .start-box {
+  background: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.start-box input[type="text"],
+.start-box input[type="number"],
+.start-box select {
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid #ccc;
   outline: none;
-  width: 250px;
   font-size: 16px;
 }
 
+body.dark .start-box input[type="text"],
+body.dark .start-box input[type="number"],
+body.dark .start-box select {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+}
+
+.mode-selection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  text-align: left;
+}
+
+.mode-selection label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+body.dark .mode-selection label {
+  background: #2a2a2a;
+}
+
+.mode-selection label:hover {
+  background: #e9ecef;
+}
+
+body.dark .mode-selection label:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.start-box button {
+  width: 100%;
+  margin: 0;
+}
+/* ================================ */
+
 button {
-  margin-left: 10px;
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
@@ -48,6 +114,7 @@ button:hover {
 #quiz-container {
   max-width: 700px;
   margin: auto;
+  width: 100%;
 }
 
 .question {
@@ -63,17 +130,28 @@ button:hover {
   transform: translateY(-3px);
 }
 
-label {
-  display: block;
-  margin: 5px 0;
+label.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0;
   cursor: pointer;
-  padding: 5px;
+  padding: 6px;
   border-radius: 6px;
   transition: background 0.2s;
 }
 
-label:hover {
+label.option:hover {
   background: #f0f0f0;
+}
+
+.option input {
+  margin-top: 4px;
+}
+
+.option span {
+  flex: 1;
+  line-height: 1.4;
 }
 
 .correct {
@@ -103,41 +181,24 @@ label:hover {
   font-size: 22px;
   margin-top: 10px;
 }
-/* ===== DARK MODE (IMPROVED) ===== */
+
+/* ===== DARK MODE ===== */
 
 body.dark {
   background: #121212;
   color: #e0e0e0;
 }
 
-/* Question card */
 body.dark .question {
   background: #1e1e1e;
   color: #e0e0e0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-/* Options */
-.option {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 8px 0;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 6px;
-}
-
-body.dark .option:hover {
+body.dark label.option:hover {
   background: rgba(255,255,255,0.08);
 }
 
-/* Label hover */
-body.dark label:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-/* Timer (improved look) */
 body.dark #timer {
   background: linear-gradient(135deg, #232526, #414345);
   padding: 8px 14px;
@@ -147,66 +208,28 @@ body.dark #timer {
   font-weight: bold;
 }
 
-/* Result text */
 body.dark #result {
   color: #ffffff;
 }
 
-/* ===== RESULT COLORS FIX ===== */
-
-/* Correct answer */
 body.dark .correct {
   background-color: #1f3d2b !important;
   border-left: 6px solid #28a745;
   color: #a8ffb0;
 }
 
-/* Wrong answer */
 body.dark .wrong {
   background-color: #4a1f24 !important;
   border-left: 6px solid #dc3545;
   color: #ffb3b3;
 }
 
-/* Correct answer text */
 body.dark .correct-answer {
   color: #00ffcc;
   font-weight: bold;
 }
 
-.option input {
-  margin-top: 4px;
-}
-
-.option span {
-  flex: 1;
-  line-height: 1.4;
-}
-.option:hover {
-  background: rgba(0,0,0,0.05);
-  border-radius: 6px;
-}   
-
-
-.footer span {
-  color: red;
-  animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.2); }
-  50% { transform: scale(1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Push footer to bottom */
+/* Footer & Other */
 .footer {
   margin-top: auto;
   text-align: center;
@@ -220,12 +243,23 @@ body.dark .footer {
   color: #aaa;
 }
 
-#submit-btn, #retry-btn {
-  margin-bottom: 20px;
+.footer span {
+  color: red;
+  animation: heartbeat 1.5s infinite;
+  display: inline-block;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 #theme-toggle {
   align-self: flex-start;
   width: auto;
   display: inline-block;
+  margin-bottom: 15px;
 }
