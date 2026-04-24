@@ -209,7 +209,15 @@ function startQuiz() {
   document.getElementById("timer").style.display = "block";
   document.getElementById("timer").style.color = "white";
   
-  selectedQuestions = shuffle(questionPool).slice(0, n);
+  // Create deep copy and shuffle options
+  let rawSelected = shuffle(questionPool).slice(0, n);
+  selectedQuestions = rawSelected.map(q => JSON.parse(JSON.stringify(q)));
+
+  selectedQuestions.forEach(q => {
+      let correctText = q.options[q.answer]; 
+      shuffle(q.options); 
+      q.answer = q.options.indexOf(correctText); 
+  });
 
   document.getElementById("start-screen").style.display = "none";
   document.getElementById("submit-btn").style.display = "block";
@@ -314,7 +322,7 @@ function restartQuiz() {
     document.getElementById("result").innerText = "";
     document.getElementById("retry-btn").style.display = "none";
     document.getElementById("submit-btn").style.display = "none";
-    document.getElementById("start-screen").style.display = "flex"; // Changed from block to flex for the box layout
+    document.getElementById("start-screen").style.display = "flex"; 
     document.getElementById("timer").style.display = "none";
     document.getElementById("timer").innerText = "";
 }
