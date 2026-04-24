@@ -9,6 +9,18 @@ let timeLeft = 0;
 let timerInterval;
 
 let allQuestions = [
+/* -------- SET 0 (Week 0) -------- */
+{question: "The full form of SDGs is ___.", options: ["Sustainable Development Guide", "Sensitive Development Guide", "Sustainable Driving Goals", "Sustainable Development Goals"], answer: 3},
+{question: "The SDGs have been adopted by ___ member states.", options: ["United Kingdom", "South African", "Asian", "United Nations", "Parliamentary"], answer: 3},
+{question: "SDGs consist of ___ number of goals.", options: ["30", "15", "13", "17", "21"], answer: 3},
+{question: "SDGs are at the heart of the ___ agenda for sustainable development.", options: ["2020", "2035", "2030", "2015", "2024"], answer: 2},
+{question: "SDGs are also known as ___.", options: ["Generational goals", "Sensible goals", "Global goals", "Holistic goals", "None of the above"], answer: 2},
+{question: "All the SDGs are ___.", options: ["Unrelated", "False", "Only for one country", "Interconnected", "None of the above"], answer: 3},
+{question: "MDGs stand for ___.", options: ["Motivational Development Goals", "Macro Development Goals", "Millennium Development Goals", "Micro Development Goals"], answer: 2},
+{question: "The Agenda ___ was adopted at the Earth Summit", options: ["12", "30", "35", "40", "21"], answer: 4},
+{question: "There were ___ number of MDGs given, which were later replaced by the SDGs", options: ["17", "8", "18", "10"], answer: 1},
+{question: "The 'D' in DSDG stands for ___.", options: ["Department", "Division", "Distance", "Diversity", "None of the above"], answer: 1},
+
 /* -------- SET 1 (Week 1) -------- */
 {question: "The Global Goals were adopted by all United Nations member states in ___ as a universal call to action to end poverty, protect the planet and ensure that all people enjoy peace and prosperity by ___.", options: ["2025, 2080", "2020, 2060", "2012, 2050", "2015, 2030"], answer: 3},
 {question: "Which of the following is true?", options: ["The SDGs are a bold commitment to solely increase the GDP of India", "Dealing with climate change has no impact on gender equality", "Success in one SDG affects success of the others", "Only 14 out of the 17 SDGs are interconnected"], answer: 2},
@@ -156,7 +168,7 @@ let allQuestions = [
 
 // Dynamically assign units based on index (10 questions per unit)
 allQuestions.forEach((q, index) => {
-    q.unit = Math.floor(index / 10) + 1;
+    q.unit = Math.floor(index / 10); // Updated: 0-9 is Week 0, 10-19 is Week 1, etc.
 });
 
 let selectedQuestions= [];
@@ -185,7 +197,7 @@ function startQuiz() {
 
   if (mode === "unit") {
       let selectedUnit = parseInt(document.getElementById("unit-select").value);
-      if (!selectedUnit) {
+      if (isNaN(selectedUnit)) {
           alert("Please select a Unit from the dropdown");
           return;
       }

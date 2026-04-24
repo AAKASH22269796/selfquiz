@@ -26,7 +26,8 @@
         </div>
 
         <select id="unit-select" style="display:none;">
-            <option value="" disabled selected>Select Week (1-12)</option>
+            <option value="" disabled selected>Select Week (0-12)</option>
+            <option value="0">Week 0</option>
             <option value="1">Week 1</option>
             <option value="2">Week 2</option>
             <option value="3">Week 3</option>
@@ -77,7 +78,7 @@
         // Initialize Firestore
         const db = firebase.firestore();
         
-        // Initialize Analytics (ADDED)
+        // Initialize Analytics
         const analytics = firebase.analytics();
     </script>
 
