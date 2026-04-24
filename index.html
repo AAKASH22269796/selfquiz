@@ -55,7 +55,10 @@
     </p>
 
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
 
     <script>
         const firebaseConfig = {
@@ -68,8 +71,14 @@
         measurementId: "G-PCEYSRCCC9"
         };
 
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        
+        // Initialize Firestore
         const db = firebase.firestore();
+        
+        // Initialize Analytics (ADDED)
+        const analytics = firebase.analytics();
     </script>
 
     <script src="script.js"></script>
