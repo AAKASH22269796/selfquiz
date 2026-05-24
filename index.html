@@ -1891,9 +1891,11 @@
   }
 
   function save(cb) {
-    localStorage.setItem(getKey(cb), cb.checked ? '1' : '0');
-  }
-
+    // This sends the data to Firebase instead of your browser's local memory
+    if (window.saveToFirebase) {
+        window.saveToFirebase(cb);
+    }
+}
   function loadAll() {
     const all = document.querySelectorAll('input[type=checkbox]');
     all.forEach((cb, i) => {
@@ -1982,6 +1984,46 @@
     if (cb.checked && cb.nextElementSibling) cb.nextElementSibling.classList.add('done');
   });
   updateProgress();
+</script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDzqHBPEOnpS4MdEHfBvEesp4PqK17JeMc",
+        authDomain: "icpc-roadmap-2026.firebaseapp.com",
+        databaseURL: "https://icpc-roadmap-2026-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "icpc-roadmap-2026",
+        storageBucket: "icpc-roadmap-2026.firebasestorage.app",
+        messagingSenderId: "582043539667",
+        appId: "1:582043539667:web:f19213dcc9cda6e79e1c26",
+        measurementId: "G-M5VMXTXCMR"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // Sync from database
+    onValue(ref(db, 'roadmap/'), (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            document.querySelectorAll('input[type=checkbox]').forEach((cb, i) => {
+                const key = 'cb_' + i;
+                if (data[key] !== undefined) {
+                    cb.checked = data[key];
+                    cb.nextElementSibling?.classList.toggle('done', cb.checked);
+                }
+            });
+            if (typeof updateProgress === 'function') updateProgress();
+        }
+    });
+
+    // Save to database
+    window.saveToFirebase = function(cb) {
+        const allCbs = Array.from(document.querySelectorAll('input[type=checkbox]'));
+        const i = allCbs.indexOf(cb);
+        set(ref(db, 'roadmap/cb_' + i), cb.checked);
+    };
 </script>
 </body>
 </html>
