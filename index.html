@@ -1988,17 +1988,8 @@
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyDzqHBPEOnpS4MdEHfBvEesp4PqK17JeMc",
-        authDomain: "icpc-roadmap-2026.firebaseapp.com",
-        databaseURL: "https://icpc-roadmap-2026-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "icpc-roadmap-2026",
-        storageBucket: "icpc-roadmap-2026.firebasestorage.app",
-        messagingSenderId: "582043539667",
-        appId: "1:582043539667:web:f19213dcc9cda6e79e1c26",
-        measurementId: "G-M5VMXTXCMR"
-    };
+    // This imports the key from your local file
+    import { firebaseConfig } from './config.js';
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
@@ -2024,6 +2015,14 @@
         const i = allCbs.indexOf(cb);
         set(ref(db, 'roadmap/cb_' + i), cb.checked);
     };
+</script>
+
+<script>
+    function save(cb) {
+        if (window.saveToFirebase) {
+            window.saveToFirebase(cb);
+        }
+    }
 </script>
 </body>
 </html>

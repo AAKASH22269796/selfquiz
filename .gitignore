@@ -4,7 +4,7 @@ Thumbs.db
 
 # Logs
 *.log
-
+config.js
 # Node modules (if you add backend later)
 node_modules/
 
