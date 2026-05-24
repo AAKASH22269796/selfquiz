@@ -1,87 +1,1987 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICPC 2026 — Team DSA Roadmap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ab: #6C63FF; --ab-bg: #F0EFFE; --ab-mid: #4a43cc; --ab-border: #B8B3F5;
+    --lo: #10B981; --lo-bg: #ECFDF5; --lo-mid: #059669; --lo-border: #6EE7B7;
+    --aa: #F59E0B; --aa-bg: #FFFBEB; --aa-mid: #D97706; --aa-border: #FCD34D;
+    --dp: #EC4899; --dp-bg: #FDF2F8; --dp-mid: #DB2777; --dp-border: #F9A8D4;
+    --cm: #EF4444; --cm-bg: #FEF2F2; --cm-border: #FCA5A5;
+    --font: 'Space Grotesk', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --text: #111827;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --bg: #F9FAFB;
+    --white: #ffffff;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e3a5f 100%);
+    color: white;
+    padding: 32px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '⚔';
+    position: absolute;
+    right: 40px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 80px;
+    opacity: 0.07;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .page-header p {
+    font-size: 14px;
+    opacity: 0.75;
+    margin-bottom: 16px;
+  }
+  .header-badges {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .hbadge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--mono);
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-banner {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 40px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .prog-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .prog-bar-wrap {
+    width: 120px;
+    height: 8px;
+    background: #E5E7EB;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .prog-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+  .prog-count {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 50px;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main-wrap {
+    padding: 28px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 14px 18px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .leg {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .leg-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .badge-pill {
+    padding: 2px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: var(--mono);
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-h {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 36px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-dot {
+    width: 16px; height: 16px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── PERSON CARD ── */
+  .person-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .person-head {
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .avatar {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 17px;
+    flex-shrink: 0;
+    color: white;
+  }
+  .person-title { font-size: 20px; font-weight: 700; }
+  .person-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .person-body { padding: 0 22px 22px; }
+
+  /* ── CATEGORY GROUP ── */
+  .cat-group { margin-top: 20px; }
+  .cat-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cat-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── TOPIC GRID ── */
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+  }
+
+  /* ── TOPIC CARD ── */
+  .topic-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border-left: 3px solid var(--border);
+    transition: box-shadow 0.15s;
+  }
+  .topic-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+
+  .topic-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .topic-checkbox {
+    width: 20px; height: 20px;
+    border-radius: 5px;
+    border: 2px solid #D1D5DB;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    transition: all 0.15s;
+    background: white;
+  }
+  .topic-checkbox:checked {
+    background: var(--accent, #10B981);
+    border-color: var(--accent, #10B981);
+  }
+  .topic-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -1px; left: 2px;
+    font-size: 13px;
+    color: white;
+    font-weight: 700;
+  }
+  .topic-main { flex: 1; }
+  .topic-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .topic-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .imp-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-family: var(--mono);
+  }
+  .imp-critical { background: #FEE2E2; color: #991B1B; }
+  .imp-high     { background: #FEF3C7; color: #92400E; }
+  .imp-medium   { background: #DBEAFE; color: #1E40AF; }
+  .imp-low      { background: #F0FDF4; color: #166534; }
+  .icpc-badge   { background: #EDE9FE; color: #5B21B6; }
+  .cf-badge     { background: #E0F2FE; color: #075985; }
+  .elite-badge  { background: #FCE7F3; color: #9D174D; }
+
+  /* ── SUBTOPICS ── */
+  .subtopics { border-top: 1px dashed var(--border); padding-top: 8px; }
+  .sub-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 13px;
+    color: #374151;
+    border-bottom: 1px dashed transparent;
+  }
+  .sub-item:hover { background: rgba(0,0,0,0.015); border-radius: 4px; }
+  .sub-checkbox {
+    width: 16px; height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid #D1D5DB;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    transition: all 0.15s;
+    background: white;
+  }
+  .sub-checkbox:checked {
+    background: var(--accent, #10B981);
+    border-color: var(--accent, #10B981);
+  }
+  .sub-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -2px; left: 1px;
+    font-size: 11px;
+    color: white;
+    font-weight: 700;
+  }
+  .sub-text { line-height: 1.5; }
+  .sub-text.done { text-decoration: line-through; color: #9CA3AF; }
+
+  /* ── DP SECTION ── */
+  .dp-card {
+    background: white;
+    border: 2px dashed var(--dp-border);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 28px;
+  }
+  .dp-head {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--dp-mid);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .dp-box {
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .dp-box-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dp-mid);
+    margin-bottom: 8px;
+  }
+
+  /* ── COMMON SECTION ── */
+  .common-card {
+    background: white;
+    border: 2px solid var(--cm-border);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 28px;
+  }
+  .common-head {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--cm);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .common-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .common-box {
+    background: var(--cm-bg);
+    border: 1px solid var(--cm-border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .common-box-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #991B1B;
+    margin-bottom: 8px;
+  }
+
+  /* ── MILESTONE STRIP ── */
+  .milestone-strip {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .milestone-strip h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+  .ms-track {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .ms-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 130px;
+    flex: 1;
+  }
+  .ms-pill {
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 140px;
+  }
+  .ms-desc {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.4;
+    max-width: 120px;
+  }
+  .ms-arrow {
+    font-size: 20px;
+    color: #CBD5E1;
+    padding: 0 4px;
+    margin-top: -16px;
+    flex-shrink: 0;
+  }
+
+  /* ── RESOURCES ── */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .res-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    border-top: 3px solid;
+  }
+  .res-box h4 { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+  .res-box ul { padding-left: 16px; }
+  .res-box li { font-size: 13px; color: #374151; line-height: 1.8; }
+
+  /* ── WEEKLY ── */
+  .weekly-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .wcard {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .wday { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+  .wact { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+  /* ── DEPENDENCY ── */
+  .dep-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+  .dep-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+  .dep-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .dep-who { font-size: 12px; color: var(--muted); min-width: 80px; font-weight: 600; }
+  .dep-tag {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .dep-arrow { color: #9CA3AF; font-size: 16px; }
+
+  /* ── COMPLETED TOPIC ── */
+  .topic-card.completed .topic-name { text-decoration: line-through; color: #9CA3AF; }
+  .topic-card.completed { opacity: 0.6; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .main-wrap { padding: 16px 16px; }
+    .page-header { padding: 20px 16px; }
+    .progress-banner { padding: 12px 16px; }
+    .weekly-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
 </head>
 <body>
-    <button id="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-    <h1>Quiz App</h1>
-    <h2 id="timer" style="text-align:center; color:white; display:none;"></h2>
-    
-    <div id="start-screen" class="start-box">
-        <input type="text" id="username" placeholder="Enter your name">
-        
-        <div class="mode-selection">
-            <label>
-                <input type="radio" name="quiz-mode" value="shuffle" checked onchange="toggleUnitSelect()">
-                <span>Shuffle Solve (All Units)</span>
-            </label>
-            <label>
-                <input type="radio" name="quiz-mode" value="unit" onchange="toggleUnitSelect()">
-                <span>Solve Unit Wise</span>
-            </label>
+
+<!-- ── HEADER ── -->
+<div class="page-header">
+  <h1>⚔️ ICPC 2026 — Team DSA Master Roadmap</h1>
+  <p>Abhishek Yasraj · Lokesh Patle · Aakash Mahatha &nbsp;|&nbsp; College Qualification → Regional → ICPC</p>
+  <div class="header-badges">
+    <span class="hbadge" style="background:#6C63FF22;color:#C4BFFF;border:1px solid #6C63FF44">Abhishek · Pupil · 1370</span>
+    <span class="hbadge" style="background:#10B98122;color:#6EE7B7;border:1px solid #10B98144">Lokesh · Newbie · 1192</span>
+    <span class="hbadge" style="background:#F59E0B22;color:#FCD34D;border:1px solid #F59E0B44">Aakash · Specialist · 1406</span>
+    <span class="hbadge" style="background:#EC489922;color:#F9A8D4;border:1px solid #EC489944">Tick every subtopic as you complete it</span>
+  </div>
+</div>
+
+<!-- ── PROGRESS BANNER ── -->
+<div class="progress-banner">
+  <strong style="font-size:14px">Team Progress:</strong>
+  <div class="prog-item">
+    <span style="color:#6C63FF;font-weight:600;font-size:13px">🟦 Abhishek</span>
+    <div class="prog-bar-wrap"><div class="prog-bar" id="prog-ab" style="width:0%;background:#6C63FF"></div></div>
+    <span class="prog-count" id="cnt-ab">0 / 0</span>
+  </div>
+  <div class="prog-item">
+    <span style="color:#10B981;font-weight:600;font-size:13px">🟩 Lokesh</span>
+    <div class="prog-bar-wrap"><div class="prog-bar" id="prog-lo" style="width:0%;background:#10B981"></div></div>
+    <span class="prog-count" id="cnt-lo">0 / 0</span>
+  </div>
+  <div class="prog-item">
+    <span style="color:#F59E0B;font-weight:600;font-size:13px">🟨 Aakash</span>
+    <div class="prog-bar-wrap"><div class="prog-bar" id="prog-aa" style="width:0%;background:#F59E0B"></div></div>
+    <span class="prog-count" id="cnt-aa">0 / 0</span>
+  </div>
+  <div class="prog-item">
+    <span style="color:#EC4899;font-weight:600;font-size:13px">🔴 DP+Common</span>
+    <div class="prog-bar-wrap"><div class="prog-bar" id="prog-dp" style="width:0%;background:#EC4899"></div></div>
+    <span class="prog-count" id="cnt-dp">0 / 0</span>
+  </div>
+  <button onclick="clearAll()" style="margin-left:auto;padding:6px 14px;border-radius:7px;border:1px solid #E5E7EB;background:white;cursor:pointer;font-size:12px;color:#6B7280;font-family:inherit">Reset All</button>
+</div>
+
+<div class="main-wrap">
+
+<!-- ── LEGEND ── -->
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:#6C63FF"></div> Abhishek — Math, Number Theory, Geometry, Game Theory</div>
+  <div class="leg"><div class="leg-dot" style="background:#10B981"></div> Lokesh — Graphs, All Trees, Flows, DS for Trees (Seg Tree, BIT, DSU)</div>
+  <div class="leg"><div class="leg-dot" style="background:#F59E0B"></div> Aakash — Strings, Bit Manipulation, Advanced DS (Tries, Sparse, Mo's), Sorting</div>
+  <div class="leg"><div class="leg-dot" style="background:#EC4899"></div> All Three — Dynamic Programming (every variant)</div>
+  <div class="leg"><div class="leg-dot" style="background:#EF4444"></div> All Three — Common Core Algorithms</div>
+  <div class="leg">
+    <span class="badge-pill imp-critical">★★★ Critical</span>
+    <span class="badge-pill imp-high">★★☆ High</span>
+    <span class="badge-pill imp-medium">★☆☆ Medium</span>
+    <span class="badge-pill imp-low">○ Low</span>
+    <span class="badge-pill icpc-badge">ICPC</span>
+    <span class="badge-pill cf-badge">CF-freq</span>
+    <span class="badge-pill elite-badge">Elite</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  ABHISHEK                                         -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h">
+  <div class="section-dot" style="background:#6C63FF"></div>
+  🟦 Abhishek Yasraj — Mathematics, Number Theory, Combinatorics, Geometry, Game Theory
+</div>
+
+<div class="person-card" style="border-left:4px solid #6C63FF">
+  <div class="person-head" style="background:#F0EFFE">
+    <div class="avatar" style="background:#6C63FF">AY</div>
+    <div>
+      <div class="person-title" style="color:#3730a3">Abhishek Yasraj</div>
+      <div class="person-sub">Pupil · Max 1370 · Theory & Math Specialist</div>
+    </div>
+  </div>
+  <div class="person-body">
+
+    <!-- Number Theory -->
+    <div class="cat-group">
+      <div class="cat-label">📐 Number Theory</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Primes &amp; Sieve</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Sieve of Eratosthenes</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Segmented sieve</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Linear sieve</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Miller-Rabin primality test</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Pollard's rho factorization</span></div>
+          </div>
         </div>
 
-        <select id="unit-select" style="display:none;">
-            <option value="" disabled selected>Select Week (0-12)</option>
-            <option value="0">Week 0</option>
-            <option value="1">Week 1</option>
-            <option value="2">Week 2</option>
-            <option value="3">Week 3</option>
-            <option value="4">Week 4</option>
-            <option value="5">Week 5</option>
-            <option value="6">Week 6</option>
-            <option value="7">Week 7</option>
-            <option value="8">Week 8</option>
-            <option value="9">Week 9</option>
-            <option value="10">Week 10</option>
-            <option value="11">Week 11</option>
-            <option value="12">Week 12</option>
-        </select>
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">GCD, LCM &amp; Euler's Totient</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Euclidean algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Binary GCD</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Euler's totient φ(n)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Multiplicative functions</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Divisor sum, divisor count</span></div>
+          </div>
+        </div>
 
-        <input type="number" id="num" placeholder="Enter number of questions">
-        <button onclick="startQuiz()">Start Quiz</button>
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Modular Arithmetic</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Modular addition, multiplication</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Modular exponentiation (fast pow)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Modular inverse (Fermat's little theorem)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Extended Euclidean algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Chinese Remainder Theorem (CRT)</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Linear Algebra</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Matrix multiplication</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Matrix exponentiation</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Gaussian elimination</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Determinant &amp; rank</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">System of linear equations</span></div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div id="quiz-container"></div>
-    <button id="submit-btn" onclick="submitQuiz()" style="display:none;">Submit</button>
-    <h2 id="result"></h2>
-    <button id="retry-btn" onclick="restartQuiz()" style="display:none;">Give Test Again</button>
+    <!-- Combinatorics -->
+    <div class="cat-group">
+      <div class="cat-label">🎲 Combinatorics &amp; Counting</div>
+      <div class="topic-grid">
 
-    <p class="footer">
-    Made with <span>❤️</span> by Aakash Mahatha
-    </p>
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Permutations &amp; Combinations</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">nCr / nPr formulas</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Pascal's triangle</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Precomputed factorials mod p</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Stars and bars</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Multinomial coefficients</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Derangements</span></div>
+          </div>
+        </div>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-    
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Inclusion-Exclusion</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">PIE principle</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Counting surjections</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Mobius inversion</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Pigeonhole principle</span></div>
+          </div>
+        </div>
 
-    <script>
-        const firebaseConfig = {
-        apiKey: "AIzaSyDRp5lXGuWKn88Z_82pKZd3N0BxM-KM_xg",
-        authDomain: "selfquiz-a2d35.firebaseapp.com",
-        projectId: "selfquiz-a2d35",
-        storageBucket: "selfquiz-a2d35.firebasestorage.app",
-        messagingSenderId: "829641707211",
-        appId: "1:829641707211:web:ce2f940b902e5862f8954e",
-        measurementId: "G-PCEYSRCCC9"
-        };
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Probability &amp; Expected Value</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Basic probability rules</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Conditional probability</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Expected value &amp; linearity of expectation</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Geometric distribution</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Markov chains (basics)</span></div>
+          </div>
+        </div>
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        
-        // Initialize Firestore
-        const db = firebase.firestore();
-        
-        // Initialize Analytics
-        const analytics = firebase.analytics();
-    </script>
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Generating Functions &amp; FFT</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Ordinary generating functions</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Exponential generating functions</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">FFT — polynomial multiplication</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">NTT (Number Theoretic Transform)</span></div>
+          </div>
+        </div>
 
-    <script src="script.js"></script>
+      </div>
+    </div>
+
+    <!-- Game Theory -->
+    <div class="cat-group">
+      <div class="cat-label">♟️ Game Theory</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Nim &amp; Sprague-Grundy Theorem</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Nim game — XOR strategy</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Grundy values (nimbers)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Mex function</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Composite game analysis</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Staircase Nim</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Misère Nim</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">P-positions / N-positions</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Geometry -->
+    <div class="cat-group">
+      <div class="cat-label">📐 Computational Geometry</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Geometry Basics</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Vectors: dot product, cross product</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Line intersection</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Point-in-polygon</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Polygon area (shoelace formula)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Convex hull (Graham scan / Andrew's)</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#6C63FF;--accent:#6C63FF" data-person="ab">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Advanced Geometry</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Closest pair of points</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Rotating calipers</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Half-plane intersection</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Circle intersection &amp; tangents</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#6C63FF" onchange="subCheck(this)"><span class="sub-text">Minkowski sum</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:14px;padding:10px 14px;background:#F0EFFE;border-radius:8px;font-size:13px;color:#4a43cc">
+      <strong>Resources:</strong> CP Handbook (Laaksonen) · cp-algorithms.com · CSES Math Section · Errichto YouTube · USACO Guide Math
+    </div>
+
+  </div><!-- /person-body -->
+</div><!-- /Abhishek card -->
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  LOKESH                                           -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h">
+  <div class="section-dot" style="background:#10B981"></div>
+  🟩 Lokesh Patle — Graphs, Trees (all variants), Flows &amp; Segment Tree / BIT / DSU (tree-supporting DS)
+</div>
+
+<div class="person-card" style="border-left:4px solid #10B981">
+  <div class="person-head" style="background:#ECFDF5">
+    <div class="avatar" style="background:#10B981">LP</div>
+    <div>
+      <div class="person-title" style="color:#065f46">Lokesh Patle</div>
+      <div class="person-sub">Newbie · Max 1192 · Graph &amp; Tree Backbone of the Team</div>
+    </div>
+  </div>
+  <div class="person-body">
+
+    <!-- Graph Fundamentals -->
+    <div class="cat-group">
+      <div class="cat-label">🔍 Graph Fundamentals</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">DFS &amp; BFS</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Recursive DFS</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Iterative DFS (stack)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">BFS (queue)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Connected components detection</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Bipartite check</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Cycle detection (directed &amp; undirected)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Multi-source BFS</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Shortest Paths</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Dijkstra (priority queue)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Bellman-Ford (negative edges)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">SPFA</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Floyd-Warshall (all pairs)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">0-1 BFS (deque)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Dial's algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Negative cycle detection</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Minimum Spanning Tree</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Kruskal's algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Prim's algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Borůvka's algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">MST uniqueness properties</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Topological Sort &amp; DAG</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Kahn's algorithm (BFS-based)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">DFS-based topological sort</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Longest path in DAG</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">DAG DP</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Critical path method</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">SCC, Bridges &amp; Articulation Points</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Tarjan's SCC algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Kosaraju's SCC algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Bridge finding</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Articulation points</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Block-cut tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">2-SAT using SCC</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Network Flow</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Max flow — Ford-Fulkerson</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Dinic's algorithm (fast)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Min cut theorem</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Bipartite matching (Hopcroft-Karp)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Hungarian algorithm (min cost matching)</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Other Graph Algorithms</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Euler path &amp; Euler circuit</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Hamiltonian path (bitmask DP)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Functional graphs (rho detection)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Graph coloring (greedy)</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Trees -->
+    <div class="cat-group">
+      <div class="cat-label">🌲 Trees — All Variants</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Tree Traversals &amp; Properties</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">DFS / BFS on trees</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Tree diameter</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Tree centroid</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Euler tour / DFS ordering</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Tree flattening (in/out times)</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">LCA — Lowest Common Ancestor</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Binary lifting (sparse table on ancestors)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Euler tour + RMQ LCA</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Farach-Colton &amp; Bender (O(1) LCA)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Online LCA queries</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Heavy-Light Decomposition (HLD)</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">HLD construction</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Path queries with segment tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Subtree queries</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">HLD on edges</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Centroid Decomposition</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Finding the centroid</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Centroid tree construction</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Distance queries using centroid</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Mo's on trees (centroid)</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Tree DP &amp; Rerooting</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Subtree DP (bottom-up)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Rerooting technique (top-down pass)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Tree knapsack</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Independent set on tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Max matching on tree</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Small-to-Large Merging &amp; Virtual Tree</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">DSU on tree (small-to-large)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Sack algorithm (HLD + DFS)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Virtual tree construction</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Problems on virtual tree</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Binary Search Trees (BST Variants)</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">BST insert / delete / search</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">AVL tree rotations</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Red-black tree (conceptual)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Treap (randomized BST)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Splay tree</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tree-supporting DS: given to Lokesh -->
+    <div class="cat-group">
+      <div class="cat-label">🧰 Tree-supporting Data Structures (used heavily in tree/graph problems)</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Disjoint Set Union (DSU)</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Union by rank</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Path compression</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Weighted DSU</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Offline DSU (rollback DSU)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">DSU on tree (small-to-large)</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Segment Tree</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Point update, range query</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Lazy propagation (range update)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Merge sort tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Persistent segment tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">2D segment tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Segment tree beats</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Fenwick Tree (BIT)</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Point update + prefix sum query</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Range update + point query</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">2D Fenwick tree</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">BIT with order statistics</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Offline BIT</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#10B981;--accent:#10B981" data-person="lo">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Sparse Table (RMQ)</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Range minimum query O(1)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">Disjoint sparse table</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#10B981" onchange="subCheck(this)"><span class="sub-text">RMQ for LCA</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:14px;padding:10px 14px;background:#ECFDF5;border-radius:8px;font-size:13px;color:#065f46">
+      <strong>Resources:</strong> CP Handbook (Graphs &amp; Trees chapters) · CSES Graph + Tree Problems · CF EDU Graph · William Lin YT · USACO Guide Graph · cp-algorithms.com
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  AAKASH                                           -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h">
+  <div class="section-dot" style="background:#F59E0B"></div>
+  🟨 Aakash Mahatha — Strings, Bit Manipulation, Advanced DS (Tries, Heaps, Mo's), Sorting &amp; Searching
+</div>
+
+<div class="person-card" style="border-left:4px solid #F59E0B">
+  <div class="person-head" style="background:#FFFBEB">
+    <div class="avatar" style="background:#F59E0B;color:#1a1a2e">AM</div>
+    <div>
+      <div class="person-title" style="color:#92400e">Aakash Mahatha</div>
+      <div class="person-sub">Specialist · Max 1406 · DS, Strings &amp; Implementation Specialist</div>
+    </div>
+  </div>
+  <div class="person-body">
+
+    <!-- String Algorithms -->
+    <div class="cat-group">
+      <div class="cat-label">🔤 String Algorithms</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Hashing</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Polynomial hashing</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Rolling hash</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Double hashing (anti-hack)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Hashing for substring equality</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">KMP &amp; Z-Algorithm</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">KMP failure function</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">KMP pattern search</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Z-array construction</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">String period &amp; border using KMP</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Suffix Array &amp; LCP</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">SA construction (O(n log n))</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">SA-IS algorithm</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">LCP array (Kasai's algorithm)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Longest common substring</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Number of distinct substrings</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Aho-Corasick Automaton</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Trie construction</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Failure links (BFS)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Multi-pattern matching</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Automaton DP on Aho-Corasick</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Dictionary links</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Trie</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Standard character trie</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Compressed trie</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Bitwise / XOR trie</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Trie with lazy deletion</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Suffix Automaton (SAM)</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">SAM construction</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Distinct substrings count</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">LCS using SAM</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Manacher's Algorithm</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Longest palindromic substring</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Count all palindromic substrings</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Palindrome tree (Eertree)</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bit Manipulation -->
+    <div class="cat-group">
+      <div class="cat-label">⚙️ Bit Manipulation</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Bitwise Tricks</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">AND / OR / XOR / NOT operations</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Set / clear / toggle bits</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Bit counting (__builtin_popcount)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Lowest set bit (n &amp; -n)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">XOR tricks (swap, pairs, missing)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Submask enumeration</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Bitmask DP</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Subset DP</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">TSP (Travelling Salesman)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">SOS DP (Sum over Subsets)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Profile DP / broken profile</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Advanced DS -->
+    <div class="cat-group">
+      <div class="cat-label">📦 Advanced Data Structures</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Stack / Queue / Deque</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Monotonic stack</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Monotonic deque</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Sliding window max/min</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Next greater / smaller element</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Heap &amp; Priority Queue</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Binary heap / STL priority_queue</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Mergeable heaps (leftist, skew)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Custom comparator heaps</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">K-th largest / K-way merge</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Mo's Algorithm &amp; Sqrt Decomposition</div>
+              <div class="topic-badges"><span class="imp-badge imp-high">★★☆</span><span class="imp-badge elite-badge">Elite</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Block decomposition (sqrt)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Mo's algorithm (offline range queries)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Mo's with rollback</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Offline query techniques</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Policy-Based DS / Ordered Set</div>
+              <div class="topic-badges"><span class="imp-badge imp-medium">★☆☆</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">order_of_key / find_by_order</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">K-th order statistics</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Count inversions with PBDS</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sorting & Searching -->
+    <div class="cat-group">
+      <div class="cat-label">🔎 Sorting &amp; Searching</div>
+      <div class="topic-grid">
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Sorting Algorithms</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Merge sort + inversion count</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Quick sort + quick select</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Counting sort</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Radix sort</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Coordinate compression</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">Binary Search (all forms)</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge icpc-badge">ICPC</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Binary search on sorted array</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Binary search on answer</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Ternary search (unimodal functions)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Parallel binary search</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Fractional cascading</span></div>
+          </div>
+        </div>
+
+        <div class="topic-card" style="border-left-color:#F59E0B;--accent:#F59E0B" data-person="aa">
+          <div class="topic-top">
+            <input type="checkbox" class="topic-checkbox" onchange="topicCheck(this)">
+            <div class="topic-main">
+              <div class="topic-name">STL Mastery &amp; Misc Techniques</div>
+              <div class="topic-badges"><span class="imp-badge imp-critical">★★★</span><span class="imp-badge cf-badge">CF-freq</span></div>
+            </div>
+          </div>
+          <div class="subtopics">
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">map / set / multiset tricks</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">unordered_map (custom hash)</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">KACTL template reference</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Constant factor optimizations</span></div>
+            <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#F59E0B" onchange="subCheck(this)"><span class="sub-text">Fast I/O (ios_base::sync_with_stdio)</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:14px;padding:10px 14px;background:#FFFBEB;border-radius:8px;font-size:13px;color:#92400e">
+      <strong>Resources:</strong> CF EDU (Strings, Range Queries) · CSES Range Queries + Strings · AtCoder Library Practice · neal wu blogs · SecondThread YT · KACTL
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  DYNAMIC PROGRAMMING — ALL THREE                  -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h">
+  <div class="section-dot" style="background:#EC4899"></div>
+  🔴 Dynamic Programming — Mandatory for All Three
+</div>
+
+<div class="dp-card">
+  <div class="dp-head">🔴 DP Core — Every Variant <span style="background:#EC4899;color:white;font-size:11px;padding:3px 10px;border-radius:6px;font-weight:600">All Three Must Master</span></div>
+  <div class="dp-grid">
+
+    <div class="dp-box">
+      <div class="dp-box-title">📚 Classical DP</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">LIS (Longest Increasing Subsequence)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">LCS (Longest Common Subsequence)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">0/1 Knapsack</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Unbounded knapsack</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Subset sum / Partition DP</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Coin change (count &amp; min)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Edit distance</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">📏 Interval DP</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Matrix chain multiplication</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Burst balloons</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Optimal BST</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Palindrome partitioning</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Stone merge</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">🔢 Digit DP</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Count in [L, R] range</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Tight constraint handling</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Leading zeros handling</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Special digit properties</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">🌲 Tree DP</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Subtree DP (bottom-up)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Rerooting technique</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Tree knapsack</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Independent set on tree</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">DP on paths in tree</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">💡 DP on Strings</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">LCS / LCS variants</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Wildcard / regex matching</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Distinct subsequences</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Automaton DP (on Aho-Corasick)</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">⚡ DP Optimizations</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Convex hull trick (CHT)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Divide &amp; Conquer DP</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Knuth's optimization</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Slope trick</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Monotone queue DP</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">🎲 Probability DP</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Expected value DP</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Markov chain DP</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Random walk DP</span></div>
+      </div>
+    </div>
+
+    <div class="dp-box">
+      <div class="dp-box-title">🧩 SOS / Subset DP</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Sum over subsets (SOS DP)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">AND / OR convolution</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">XOR convolution</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EC4899" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Zeta / Möbius transform</span></div>
+      </div>
+    </div>
+
+  </div>
+  <div style="margin-top:12px;font-size:13px;color:#9D174D">
+    <strong>Resources:</strong> AtCoder EDU DP Contest · CSES DP Section · CF EDU DP · USACO Guide DP · Digit DP blogs on Codeforces
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  COMMON CORE — ALL THREE                          -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h">
+  <div class="section-dot" style="background:#EF4444"></div>
+  🔴 Common Core — All Three Must Master
+</div>
+
+<div class="common-card">
+  <div class="common-head">🔴 Foundation Algorithms &amp; Skills <span style="background:#EF4444;color:white;font-size:11px;padding:3px 10px;border-radius:6px;font-weight:600">Everyone</span></div>
+  <div class="common-grid">
+
+    <div class="common-box">
+      <div class="common-box-title">📈 Greedy Algorithms</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Interval scheduling / activity selection</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Exchange argument proof</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Huffman coding</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Greedy + DP hybrid problems</span></div>
+      </div>
+    </div>
+
+    <div class="common-box">
+      <div class="common-box-title">➕ Prefix Sums &amp; Difference Arrays</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">1D prefix sum</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">2D prefix sum</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Difference array (range update)</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">XOR prefix</span></div>
+      </div>
+    </div>
+
+    <div class="common-box">
+      <div class="common-box-title">👆 Two Pointers &amp; Sliding Window</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Fast &amp; slow pointer</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Fixed / variable window</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Three-sum / k-sum variants</span></div>
+      </div>
+    </div>
+
+    <div class="common-box">
+      <div class="common-box-title">✂️ Divide &amp; Conquer</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Merge sort based problems</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Closest pair of points</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Karatsuba multiplication</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Master theorem</span></div>
+      </div>
+    </div>
+
+    <div class="common-box">
+      <div class="common-box-title">🔙 Backtracking</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">N-Queens, Sudoku solver</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Subset / permutation generation</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Pruning strategies</span></div>
+      </div>
+    </div>
+
+    <div class="common-box">
+      <div class="common-box-title">⏱️ Complexity &amp; Debugging</div>
+      <div class="subtopics" style="border:none;padding-top:4px">
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Big-O / Omega / Theta analysis</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Amortized analysis</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Contest debugging techniques</span></div>
+        <div class="sub-item"><input type="checkbox" class="sub-checkbox" style="--accent:#EF4444" onchange="subCheck(this)" data-person="dp"><span class="sub-text">Adhoc &amp; constructive thinking</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  MILESTONE TRACK                                  -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="milestone-strip">
+  <h3>🏁 Rating Milestone Track — Newbie → ICPC Ready</h3>
+  <div class="ms-track">
+    <div class="ms-node">
+      <div class="ms-pill" style="background:#DBEAFE;color:#1E40AF;border:1px solid #93C5FD">🌱 Newbie / Pupil</div>
+      <div class="ms-desc">Brute force · basic math · simple arrays · recursion</div>
+    </div>
+    <div class="ms-arrow">→</div>
+    <div class="ms-node">
+      <div class="ms-pill" style="background:#D1FAE5;color:#065f46;border:1px solid #6EE7B7">📗 Specialist (1400+)</div>
+      <div class="ms-desc">Binary search · greedy · DFS/BFS · prefix sums · hashing</div>
+    </div>
+    <div class="ms-arrow">→</div>
+    <div class="ms-node">
+      <div class="ms-pill" style="background:#FEF3C7;color:#92400E;border:1px solid #FCD34D">📙 Expert (1600+)</div>
+      <div class="ms-desc">Seg tree · classic DP · shortest paths · DSU · KMP</div>
+    </div>
+    <div class="ms-arrow">→</div>
+    <div class="ms-node">
+      <div class="ms-pill" style="background:#EDE9FE;color:#5B21B6;border:1px solid #C4B5FD">🏆 Cand. Master (1900+)</div>
+      <div class="ms-desc">Bitmask DP · HLD · centroid · flows · advanced math</div>
+    </div>
+    <div class="ms-arrow">→</div>
+    <div class="ms-node">
+      <div class="ms-pill" style="background:#FCE7F3;color:#9D174D;border:1px solid #F9A8D4">⭐ ICPC Ready</div>
+      <div class="ms-desc">FFT · NTT · virtual tree · CHT · SAM · geometry</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  DEPENDENCY FLOW                                  -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="dep-box">
+  <h3>🔗 Topic Dependency Flow</h3>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#6C63FF">🟦 Abhishek</span>
+    <span class="dep-tag" style="background:#EDE9FE;color:#5B21B6">Primes &amp; GCD</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#EDE9FE;color:#5B21B6">Mod arithmetic</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#EDE9FE;color:#5B21B6">Combinatorics</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">FFT / NTT</span>
+  </div>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#6C63FF">🟦 Abhishek</span>
+    <span class="dep-tag" style="background:#EDE9FE;color:#5B21B6">Game theory</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#EDE9FE;color:#5B21B6">Sprague-Grundy</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">Math DP</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">Matrix expo</span>
+  </div>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#10B981">🟩 Lokesh</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">DFS / BFS</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">Tree basics + LCA</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">HLD / Centroid</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">Virtual tree</span>
+  </div>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#10B981">🟩 Lokesh</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">DSU</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">Seg Tree / BIT</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">Shortest paths</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#D1FAE5;color:#065f46">SCC / Flows</span>
+  </div>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#D97706">🟨 Aakash</span>
+    <span class="dep-tag" style="background:#FEF3C7;color:#92400E">Hashing / KMP</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FEF3C7;color:#92400E">Trie / Aho-Corasick</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">Suffix array / SAM</span>
+  </div>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#D97706">🟨 Aakash</span>
+    <span class="dep-tag" style="background:#FEF3C7;color:#92400E">Bit tricks</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FEF3C7;color:#92400E">Bitmask DP</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FEF3C7;color:#92400E">Stack / Heap / Mo's</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">Advanced DS</span>
+  </div>
+  <div class="dep-row">
+    <span class="dep-who" style="color:#9D174D">All three</span>
+    <span class="dep-tag" style="background:#FDF2F8;color:#9D174D;border:1px solid #F9A8D4">Classic DP</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FDF2F8;color:#9D174D;border:1px solid #F9A8D4">Bitmask / Digit DP</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FDF2F8;color:#9D174D;border:1px solid #F9A8D4">Tree DP</span>
+    <span class="dep-arrow">→</span>
+    <span class="dep-tag" style="background:#FCE7F3;color:#9D174D">DP Optimizations</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  WEEKLY SCHEDULE                                  -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h" style="font-size:16px">📅 Weekly Practice Schedule</div>
+<div class="weekly-grid">
+  <div class="wcard" style="border-top:3px solid #6C63FF">
+    <div class="wday">Mon · Wed</div>
+    <div class="wact">📘 Topic practice<br>CSES + CF EDU<br>2–3 problems each person</div>
+  </div>
+  <div class="wcard" style="border-top:3px solid #10B981">
+    <div class="wday">Tue · Thu</div>
+    <div class="wact">⚡ CF rated round<br>or virtual contest<br>Div. 2 / 3</div>
+  </div>
+  <div class="wcard" style="border-top:3px solid #F59E0B">
+    <div class="wday">Fri</div>
+    <div class="wact">🔍 Upsolving session<br>Analyze failures<br>Read editorials</div>
+  </div>
+  <div class="wcard" style="border-top:3px solid #EC4899">
+    <div class="wday">Sat</div>
+    <div class="wact">🏋️ Team practice<br>Virtual ICPC round<br>3-person role split</div>
+  </div>
+  <div class="wcard" style="border-top:3px solid #EF4444">
+    <div class="wday">Sun</div>
+    <div class="wact">📖 Theory / new topic<br>+ AtCoder contest<br>+ revision loop</div>
+  </div>
+</div>
+<div style="padding:10px 14px;background:white;border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--muted);margin-bottom:28px">
+  🔁 <strong>Revision loop:</strong> Every 2 weeks — revisit weak topics · upsolve unsolved CF problems · re-attempt hard CSES problems · compare each other's solutions
+</div>
+
+
+<!-- ══════════════════════════════════════════════════ -->
+<!--  RESOURCES                                        -->
+<!-- ══════════════════════════════════════════════════ -->
+<div class="section-h" style="font-size:16px">📚 Resources by Role</div>
+<div class="resources-grid">
+  <div class="res-box" style="border-top-color:#6C63FF">
+    <h4 style="color:#3730a3">🟦 Abhishek — Math &amp; Theory</h4>
+    <ul>
+      <li>CP Handbook (Laaksonen) — Math chapters</li>
+      <li>cp-algorithms.com (Number Theory)</li>
+      <li>CSES Math Problem Set</li>
+      <li>Errichto YouTube</li>
+      <li>USACO Guide — Math</li>
+      <li>AtCoder EDU DP Contest</li>
+      <li>AoPS (for combinatorics)</li>
+    </ul>
+  </div>
+  <div class="res-box" style="border-top-color:#10B981">
+    <h4 style="color:#065f46">🟩 Lokesh — Graphs, Trees &amp; Tree DS</h4>
+    <ul>
+      <li>CP Handbook — Graph &amp; Tree chapters</li>
+      <li>CSES Graph + Tree Problems (all 30+)</li>
+      <li>CF EDU — Graph Algorithms</li>
+      <li>William Lin (tmwilliamlin168) YT</li>
+      <li>USACO Guide — Graph</li>
+      <li>cp-algorithms.com (Trees)</li>
+      <li>tourist's editorials</li>
+    </ul>
+  </div>
+  <div class="res-box" style="border-top-color:#F59E0B">
+    <h4 style="color:#92400e">🟨 Aakash — Strings, DS &amp; Implementation</h4>
+    <ul>
+      <li>CF EDU — Segment Tree + Strings</li>
+      <li>CSES Range Queries + String sections</li>
+      <li>AtCoder Library Practice Contest</li>
+      <li>neal wu CF blogs</li>
+      <li>SecondThread YouTube</li>
+      <li>KACTL template reference</li>
+      <li>cp-algorithms.com (Strings)</li>
+    </ul>
+  </div>
+  <div class="res-box" style="border-top-color:#EC4899">
+    <h4 style="color:#9D174D">🔴 All Three — DP + Common</h4>
+    <ul>
+      <li>AtCoder EDU DP Contest (26 problems)</li>
+      <li>CSES DP Section</li>
+      <li>CF EDU DP problems</li>
+      <li>USACO Guide DP chapter</li>
+      <li>Digit DP tutorial blogs (CF)</li>
+      <li>Codeforces problemset (tag: dp)</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- /main-wrap -->
+
+<div class="footer">
+  "Consistent upsolving beats random grinding. Own your specialization. Cover each other's blindspots." ⚔️
+  <br><span style="font-size:11px;margin-top:4px;display:block">Progress is saved in your browser. Open this file in any browser and your checkmarks persist.</span>
+</div>
+
+<script>
+  // Save/load from localStorage
+  function getKey(cb) {
+    const card = cb.closest('[data-person]') || cb.closest('.dp-box') || cb.closest('.common-box');
+    const person = card ? card.getAttribute('data-person') || cb.getAttribute('data-person') || 'dp' : 'dp';
+    const idx = Array.from(document.querySelectorAll('input[type=checkbox]')).indexOf(cb);
+    return 'icpc_cb_' + idx;
+  }
+
+  function save(cb) {
+    localStorage.setItem(getKey(cb), cb.checked ? '1' : '0');
+  }
+
+  function loadAll() {
+    const all = document.querySelectorAll('input[type=checkbox]');
+    all.forEach((cb, i) => {
+      const val = localStorage.getItem('icpc_cb_' + i);
+      if (val === '1') cb.checked = true;
+    });
+  }
+
+  function topicCheck(cb) {
+    // Auto-check all sub-checkboxes in this topic card
+    const card = cb.closest('.topic-card');
+    if (card) {
+      const subs = card.querySelectorAll('.sub-checkbox');
+      subs.forEach(s => {
+        s.checked = cb.checked;
+        s.nextElementSibling && (s.nextElementSibling.classList.toggle('done', cb.checked));
+        save(s);
+      });
+    }
+    save(cb);
+    updateProgress();
+  }
+
+  function subCheck(cb) {
+    cb.nextElementSibling && (cb.nextElementSibling.classList.toggle('done', cb.checked));
+    // Update parent topic checkbox if all subs are checked
+    const card = cb.closest('.topic-card');
+    if (card) {
+      const subs = card.querySelectorAll('.sub-checkbox');
+      const topicCb = card.querySelector('.topic-checkbox');
+      if (topicCb) {
+        topicCb.checked = Array.from(subs).every(s => s.checked);
+        save(topicCb);
+      }
+    }
+    save(cb);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const persons = ['ab', 'lo', 'aa'];
+    persons.forEach(p => {
+      const cards = document.querySelectorAll(`.topic-card[data-person="${p}"]`);
+      let total = 0, done = 0;
+      cards.forEach(c => {
+        const subs = c.querySelectorAll('.sub-checkbox');
+        if (subs.length === 0) {
+          // count topic checkbox
+          const tc = c.querySelector('.topic-checkbox');
+          if (tc) { total++; if (tc.checked) done++; }
+        } else {
+          subs.forEach(s => { total++; if (s.checked) done++; });
+        }
+      });
+      const pct = total > 0 ? Math.round(done / total * 100) : 0;
+      const bar = document.getElementById('prog-' + p);
+      const cnt = document.getElementById('cnt-' + p);
+      if (bar) bar.style.width = pct + '%';
+      if (cnt) cnt.textContent = done + ' / ' + total;
+    });
+    // DP+common
+    const dpSubs = document.querySelectorAll('.dp-card .sub-checkbox, .common-card .sub-checkbox');
+    let dpTotal = dpSubs.length, dpDone = 0;
+    dpSubs.forEach(s => { if (s.checked) dpDone++; });
+    const dpPct = dpTotal > 0 ? Math.round(dpDone / dpTotal * 100) : 0;
+    const dpBar = document.getElementById('prog-dp');
+    const dpCnt = document.getElementById('cnt-dp');
+    if (dpBar) dpBar.style.width = dpPct + '%';
+    if (dpCnt) dpCnt.textContent = dpDone + ' / ' + dpTotal;
+  }
+
+  function clearAll() {
+    if (!confirm('Reset all checkmarks?')) return;
+    document.querySelectorAll('input[type=checkbox]').forEach((cb, i) => {
+      cb.checked = false;
+      localStorage.removeItem('icpc_cb_' + i);
+      if (cb.nextElementSibling) cb.nextElementSibling.classList.remove('done');
+    });
+    updateProgress();
+  }
+
+  // Init
+  loadAll();
+  // Apply done styles on load
+  document.querySelectorAll('.sub-checkbox').forEach(cb => {
+    if (cb.checked && cb.nextElementSibling) cb.nextElementSibling.classList.add('done');
+  });
+  updateProgress();
+</script>
 </body>
 </html>
