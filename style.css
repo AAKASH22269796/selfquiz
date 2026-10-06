@@ -6,7 +6,7 @@
 :root {
   /* Fonts */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  
+
   /* Light Theme (Gentle Slate & Warm Neutral Palette) */
   --bg-page: #f8fafc;
   --bg-card: #ffffff;
@@ -14,39 +14,39 @@
   --bg-input: #ffffff;
   --border-color: #e2e8f0;
   --border-focus: #6366f1;
-  
+
   --text-main: #0f172a;
   --text-muted: #64748b;
   --text-subtle: #94a3b8;
-  
+
   --primary: #4f46e5;
   --primary-hover: #4338ca;
   --primary-light: #eef2ff;
   --primary-text: #4338ca;
-  
+
   --success: #059669;
   --success-bg: #ecfdf5;
   --success-border: #a7f3d0;
   --success-text: #065f46;
-  
+
   --danger: #e11d48;
   --danger-bg: #fff1f2;
   --danger-border: #fecdd3;
   --danger-text: #9f1239;
-  
+
   --warning: #d97706;
   --warning-bg: #fffbeb;
   --warning-border: #fde68a;
-  
+
   --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
   --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
   --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
-  
+
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-full: 9999px;
-  
+
   --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -58,37 +58,205 @@ body.dark {
   --bg-input: #182234;
   --border-color: #334155;
   --border-focus: #818cf8;
-  
+
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-subtle: #64748b;
-  
+
   --primary: #6366f1;
   --primary-hover: #4f46e5;
   --primary-light: rgba(99, 102, 241, 0.15);
   --primary-text: #a5b4fc;
-  
+
   --success: #10b981;
   --success-bg: rgba(16, 185, 129, 0.15);
   --success-border: rgba(16, 185, 129, 0.3);
   --success-text: #6ee7b7;
-  
+
   --danger: #f43f5e;
   --danger-bg: rgba(244, 63, 94, 0.15);
   --danger-border: rgba(244, 63, 94, 0.3);
   --danger-text: #fda4af;
-  
+
   --warning: #f59e0b;
   --warning-bg: rgba(245, 158, 11, 0.15);
   --warning-border: rgba(245, 158, 11, 0.3);
-  
+
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.5);
 }
 
+/* ==========================================================================
+   PEACEFUL COLOR THEMES (SUBTLE TINTING & EYE-FRIENDLY PALETTES)
+   Tints the whole page background subtly and harmoniously tints inner cards,
+   borders, badges, and accents. Works in both Light and Dark modes.
+   ========================================================================== */
+
+/* 1. Forest Sage (Botanical Mint & Eucalyptus - Relaxing for eye muscles) */
+body[data-theme="sage"] {
+  --bg-page: #f2f7f4;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #e6f1ea;
+  --bg-input: #ffffff;
+  --border-color: #d0e4d7;
+  --border-focus: #10b981;
+  --text-main: #0c1a13;
+  --text-muted: #4e6b5a;
+  --text-subtle: #829f8f;
+  --primary: #15803d;
+  --primary-hover: #166534;
+  --primary-light: #e8f5ed;
+  --primary-text: #166534;
+}
+body.dark[data-theme="sage"] {
+  --bg-page: #0d1712;
+  --bg-card: #15241d;
+  --bg-card-subtle: #1c3127;
+  --bg-input: #121e18;
+  --border-color: #274537;
+  --border-focus: #34d399;
+  --text-main: #f0fdf4;
+  --text-muted: #86a896;
+  --text-subtle: #567564;
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --primary-light: rgba(16, 185, 129, 0.16);
+  --primary-text: #6ee7b7;
+}
+
+/* 2. Ocean Mist (Calming Sky & Coastal Breeze - Focus & Clarity) */
+body[data-theme="ocean"] {
+  --bg-page: #f0f6fa;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #e2edf6;
+  --bg-input: #ffffff;
+  --border-color: #cde0ee;
+  --border-focus: #0284c7;
+  --text-main: #0c1824;
+  --text-muted: #48657f;
+  --text-subtle: #7d9cb6;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --primary-text: #0369a1;
+}
+body.dark[data-theme="ocean"] {
+  --bg-page: #0b1522;
+  --bg-card: #132235;
+  --bg-card-subtle: #1b2e47;
+  --bg-input: #101c2c;
+  --border-color: #233e60;
+  --border-focus: #38bdf8;
+  --text-main: #f0f9ff;
+  --text-muted: #82a5c4;
+  --text-subtle: #51718f;
+  --primary: #38bdf8;
+  --primary-hover: #0284c7;
+  --primary-light: rgba(56, 189, 248, 0.16);
+  --primary-text: #7dd3fc;
+}
+
+/* 3. Warm Parchment (Cozy Antique Paper & Amber - Zero Blue Light Glare) */
+body[data-theme="parchment"] {
+  --bg-page: #faf5ee;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f3ecdf;
+  --bg-input: #ffffff;
+  --border-color: #e6dcce;
+  --border-focus: #d97706;
+  --text-main: #1f1810;
+  --text-muted: #6e5f4d;
+  --text-subtle: #a19280;
+  --primary: #b45309;
+  --primary-hover: #92400e;
+  --primary-light: #fef3c7;
+  --primary-text: #92400e;
+}
+body.dark[data-theme="parchment"] {
+  --bg-page: #191410;
+  --bg-card: #251e18;
+  --bg-card-subtle: #342a22;
+  --bg-input: #1e1813;
+  --border-color: #46392e;
+  --border-focus: #fbbf24;
+  --text-main: #fefce8;
+  --text-muted: #b09e88;
+  --text-subtle: #796a58;
+  --primary: #f59e0b;
+  --primary-hover: #d97706;
+  --primary-light: rgba(245, 158, 11, 0.16);
+  --primary-text: #fde68a;
+}
+
+/* 4. Lavender Mist (Soothing Twilight & Lilac - Dreamy & Tranquil) */
+body[data-theme="lavender"] {
+  --bg-page: #f6f3f9;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #ece5f4;
+  --bg-input: #ffffff;
+  --border-color: #ded3ec;
+  --border-focus: #8b5cf6;
+  --text-main: #191124;
+  --text-muted: #645579;
+  --text-subtle: #9887af;
+  --primary: #7c3aed;
+  --primary-hover: #6d28d9;
+  --primary-light: #f3e8ff;
+  --primary-text: #6d28d9;
+}
+body.dark[data-theme="lavender"] {
+  --bg-page: #14101e;
+  --bg-card: #1f182d;
+  --bg-card-subtle: #2c2240;
+  --bg-input: #181324;
+  --border-color: #3f315a;
+  --border-focus: #a78bfa;
+  --text-main: #faf5ff;
+  --text-muted: #9f8ebd;
+  --text-subtle: #6d5d88;
+  --primary: #a78bfa;
+  --primary-hover: #8b5cf6;
+  --primary-light: rgba(167, 139, 250, 0.16);
+  --primary-text: #c4b5fd;
+}
+
+/* 5. Desert Blossom (Soft Peach & Velvet Rose - Gentle & Warm) */
+body[data-theme="peach"] {
+  --bg-page: #fbf4f3;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f6e7e5;
+  --bg-input: #ffffff;
+  --border-color: #ecdad7;
+  --border-focus: #f43f5e;
+  --text-main: #241114;
+  --text-muted: #735156;
+  --text-subtle: #a68489;
+  --primary: #e11d48;
+  --primary-hover: #be123c;
+  --primary-light: #ffe4e6;
+  --primary-text: #be123c;
+}
+body.dark[data-theme="peach"] {
+  --bg-page: #191113;
+  --bg-card: #26181b;
+  --bg-card-subtle: #362227;
+  --bg-input: #1e1316;
+  --border-color: #492d34;
+  --border-focus: #fb7185;
+  --text-main: #fff1f2;
+  --text-muted: #b78a91;
+  --text-subtle: #7e555d;
+  --primary: #fb7185;
+  --primary-hover: #f43f5e;
+  --primary-light: rgba(251, 113, 133, 0.16);
+  --primary-text: #fecdd3;
+}
+
 /* Global Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -233,6 +401,213 @@ body {
   color: var(--text-main);
   border-color: var(--text-subtle);
   background: var(--bg-card-subtle);
+}
+
+/* ==========================================================================
+   THEME DROPDOWN MENU
+   ========================================================================== */
+.theme-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.theme-menu-btn {
+  gap: 0.45rem;
+}
+
+.theme-indicator-swatch {
+  width: 13px;
+  height: 13px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px var(--border-color);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.theme-menu-arrow {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-dropdown-wrapper.open .theme-menu-arrow {
+  transform: rotate(180deg);
+}
+
+.theme-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 280px;
+  max-width: calc(100vw - 2rem);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 0.55rem;
+  z-index: 1000;
+  animation: theme-pop-in 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes theme-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.theme-dropdown-header {
+  padding: 0.4rem 0.6rem 0.55rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.theme-dropdown-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.theme-dropdown-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.theme-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.theme-option-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.6rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.theme-option-item:hover {
+  background: var(--bg-card-subtle);
+  border-color: var(--border-color);
+}
+
+.theme-option-item.active {
+  background: var(--primary-light);
+  border-color: var(--border-focus);
+}
+
+/* Dual Color Swatch Preview: Outer shows page background tint, inner shows primary accent */
+.theme-swatch-duo {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  border: 1.5px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+}
+
+.theme-swatch-duo::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Mode Swatches */
+.swatch-default { background: #f8fafc; }
+.swatch-default::after { background: #4f46e5; }
+
+.swatch-sage { background: #f2f7f4; }
+.swatch-sage::after { background: #15803d; }
+
+.swatch-ocean { background: #f0f6fa; }
+.swatch-ocean::after { background: #0284c7; }
+
+.swatch-parchment { background: #faf5ee; }
+.swatch-parchment::after { background: #b45309; }
+
+.swatch-lavender { background: #f6f3f9; }
+.swatch-lavender::after { background: #7c3aed; }
+
+.swatch-peach { background: #fbf4f3; }
+.swatch-peach::after { background: #e11d48; }
+
+/* Dark Mode Swatches */
+body.dark .swatch-default { background: #0f172a; }
+body.dark .swatch-default::after { background: #6366f1; }
+
+body.dark .swatch-sage { background: #0d1712; }
+body.dark .swatch-sage::after { background: #10b981; }
+
+body.dark .swatch-ocean { background: #0b1522; }
+body.dark .swatch-ocean::after { background: #38bdf8; }
+
+body.dark .swatch-parchment { background: #191410; }
+body.dark .swatch-parchment::after { background: #f59e0b; }
+
+body.dark .swatch-lavender { background: #14101e; }
+body.dark .swatch-lavender::after { background: #a78bfa; }
+
+body.dark .swatch-peach { background: #191113; }
+body.dark .swatch-peach::after { background: #fb7185; }
+
+.theme-option-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.theme-option-name {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+.theme-option-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.theme-check {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.theme-option-item.active .theme-check {
+  opacity: 1;
 }
 
 /* ==========================================================================
@@ -518,8 +893,13 @@ body {
 }
 
 @keyframes pulse-danger {
-  from { transform: scale(1); }
-  to { transform: scale(1.03); }
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.03);
+  }
 }
 
 /* ==========================================================================
@@ -974,11 +1354,25 @@ body.dark .correct-badge {
 }
 
 @keyframes pulse-heart {
-  0% { transform: scale(1); }
-  15% { transform: scale(1.18); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.18); }
-  60% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.18);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.18);
+  }
+
+  60% {
+    transform: scale(1);
+  }
 }
 
 /* ==========================================================================
@@ -988,33 +1382,34 @@ body.dark .correct-badge {
   .app-container {
     padding: 1rem 0.75rem 2rem;
   }
-  
+
   .top-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
   }
-  
+
   .header-actions {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .mode-toggle-group {
     grid-template-columns: 1fr;
   }
-  
+
   .nav-pills {
     width: 100%;
     display: flex;
   }
-  
+
   .nav-pill-btn {
     flex: 1;
     justify-content: center;
   }
-  
-  .question-card, .learn-card {
+
+  .question-card,
+  .learn-card {
     padding: 1.15rem 1rem;
   }
 }

@@ -194,8 +194,20 @@ allQuestions.forEach((q, index) => {
 /* ==========================================================================
    INITIALIZATION & THEME MANAGEMENT
    ========================================================================== */
+const COLOR_THEMES = {
+  default: { name: "Default Slate", label: "Theme", color: "#6366f1" },
+  sage: { name: "Forest Sage", label: "Sage", color: "#10b981" },
+  ocean: { name: "Ocean Mist", label: "Ocean", color: "#0284c7" },
+  parchment: { name: "Warm Parchment", label: "Parchment", color: "#d97706" },
+  lavender: { name: "Lavender Mist", label: "Lavender", color: "#8b5cf6" },
+  peach: { name: "Desert Blossom", label: "Blossom", color: "#e11d48" }
+};
+
+let activeColorTheme = "default";
+
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
+  initColorTheme();
   initNameInput();
   initQuickCountChips();
   initLearnFilters();
@@ -226,6 +238,92 @@ function updateThemeButtonUI() {
   const isDark = document.body.classList.contains("dark");
   btn.innerHTML = isDark ? `☀️ Light` : `🌙 Dark`;
   btn.title = isDark ? "Switch to eye-friendly light mode" : "Switch to soothing dark mode";
+}
+
+/* --- Peaceful Color Palette Management --- */
+function initColorTheme() {
+  const savedColor = localStorage.getItem("selfquiz_color_theme") || "default";
+  applyColorTheme(savedColor);
+
+  // Close dropdown on outside click
+  document.addEventListener("click", (e) => {
+    const wrapper = document.getElementById("theme-dropdown-wrapper");
+    if (wrapper && !wrapper.contains(e.target)) {
+      closeThemeMenu();
+    }
+  });
+
+  // Close dropdown on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeThemeMenu();
+    }
+  });
+}
+
+function toggleThemeMenu() {
+  const dropdown = document.getElementById("theme-menu-dropdown");
+  const wrapper = document.getElementById("theme-dropdown-wrapper");
+  const btn = document.getElementById("theme-menu-btn");
+  if (!dropdown || !wrapper) return;
+
+  const isOpen = dropdown.style.display !== "none";
+  if (isOpen) {
+    closeThemeMenu();
+  } else {
+    dropdown.style.display = "block";
+    wrapper.classList.add("open");
+    if (btn) btn.setAttribute("aria-expanded", "true");
+  }
+}
+
+function closeThemeMenu() {
+  const dropdown = document.getElementById("theme-menu-dropdown");
+  const wrapper = document.getElementById("theme-dropdown-wrapper");
+  const btn = document.getElementById("theme-menu-btn");
+  if (dropdown) dropdown.style.display = "none";
+  if (wrapper) wrapper.classList.remove("open");
+  if (btn) btn.setAttribute("aria-expanded", "false");
+}
+
+function selectTheme(themeId) {
+  applyColorTheme(themeId);
+  localStorage.setItem("selfquiz_color_theme", themeId);
+  closeThemeMenu();
+}
+
+function applyColorTheme(themeId) {
+  if (!COLOR_THEMES[themeId]) {
+    themeId = "default";
+  }
+  activeColorTheme = themeId;
+
+  if (themeId === "default") {
+    document.body.removeAttribute("data-theme");
+  } else {
+    document.body.setAttribute("data-theme", themeId);
+  }
+
+  // Update theme option active indicator in menu
+  const items = document.querySelectorAll(".theme-option-item");
+  items.forEach(item => {
+    if (item.getAttribute("data-theme-id") === themeId) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+
+  // Update button label and color dot
+  const themeMeta = COLOR_THEMES[themeId];
+  const labelEl = document.getElementById("theme-menu-label");
+  const swatchEl = document.getElementById("theme-indicator-swatch");
+  if (labelEl) {
+    labelEl.innerText = themeMeta.label || "Theme";
+  }
+  if (swatchEl) {
+    swatchEl.style.backgroundColor = themeMeta.color;
+  }
 }
 
 function initNameInput() {
