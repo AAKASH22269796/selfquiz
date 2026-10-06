@@ -1,97 +1,30 @@
-# 🎯 Quiz App (MCQ-Based)
+# SelfQuiz 📚
 
-An interactive web-based quiz application that allows users to attempt multiple-choice questions with a timer, instant evaluation, and retry functionality.
+A modern, eye-friendly web application for practicing and mastering weekly self-assessments. Designed with soft, calming typography and thoughtful contrast to prevent eye strain during extended study sessions.
 
----
+## ✨ Features
 
-## 🚀 Features
+- **📝 Practice Quiz Mode:**
+  - **Shuffle Mode:** Random questions drawn from across all units.
+  - **Unit-Wise Mode:** Focused revision for specific weeks (Weeks 0 – 12).
+  - **Customizable Question Count:** Quick chips (5, 10, 15, 20, All) or custom input.
+  - **Timed Testing:** Subtle timer with gentle visual alerts.
+  - **Instant Review:** Clean breakdown of correct answers vs. chosen responses with score accuracy.
 
-* 🎲 Random question selection from a question bank
-* ⏱️ Timer-based quiz system
-* ✅ Instant score calculation
-* ❌ Highlights incorrect answers and shows correct ones
-* 🔁 Retry quiz functionality
-* 🌙 Dark / Light mode toggle
-* 🎨 Clean and responsive UI
+- **📖 Learn It (Study Deck Mode):**
+  - All questions and options are clearly laid out with the correct answer visibly highlighted with a check badge (`✓ Correct Answer`).
+  - Perfect for flash memorization, revision, and active recall.
+  - **Real-time Filter & Search:** Instant keyword lookup across questions and answer options.
+  - **Unit Filter:** Easily jump between weeks.
 
----
+- **🌙 Eye-Friendly Theme:**
+  - Soft light theme (gentle slate & warm neutral tones).
+  - Soothing dark mode (gentle midnight charcoal) for late-night studying.
+  - Preserves user preferences across sessions.
 
-## 🧠 How It Works
+- **⚡ Zero Bloat & Deployment Ready:**
+  - Built with pure HTML5, modern CSS, and vanilla JavaScript.
+  - Instant deployment on Vercel, GitHub Pages, or Netlify with zero build step required.
 
-1. Enter number of questions
-2. Quiz starts with randomly selected questions
-3. Timer begins automatically
-4. Select answers and submit
-5. View:
-
-   * Score
-   * Correct & incorrect answers
-6. Retry the quiz anytime
-
----
-
-## 🛠️ Tech Stack
-
-* HTML
-* CSS
-* JavaScript (Vanilla)
-
----
-
-## 📂 Project Structure
-
-```
-quiz-app/
-│── index.html
-│── style.css
-│── script.js
-│── README.md
-│── .gitignore
-```
-
----
-
-## ⚡ Run Locally
-
-1. Clone the repository:
-
-```
-git clone https://github.com/AAKASH22269796/selfquiz
-```
-
-2. Open the project folder:
-
-```
-cd selfquiz
-```
-
-3. Run:
-
-* Open `index.html` in your browser
-
----
-
-## 🌍 Live Demo
-
-(Add your deployed link here)
-
----
-
-## 🔮 Future Improvements
-
-* 📊 Leaderboard
-* 💾 Save scores
-* 🔐 User login system
-* 📱 Better mobile UI
-
----
-
-## 👨‍💻 Author
-
-Aakash Mahatha
-
----
-
-## ⭐ Support
-
-If you like this project, give it a ⭐ on GitHub!
+## 🚀 Live Usage
+Simply open `index.html` in any browser or visit your deployed Vercel URL!

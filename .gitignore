@@ -1,29 +1,19 @@
-# OS files
+# Private Admin Controls & Telemetry
+export.html
+admin.html
+
+# Environment & Config
+.env
+config.js
+
+# OS Files & Cache
 .DS_Store
 Thumbs.db
-
-# Logs
 *.log
-config.js
-# Node modules (if you add backend later)
-node_modules/
-
-# Environment files
-.env
-
-# VS Code settings (optional)
-.vscode/
-
-# Mac system files
-.AppleDouble
-.LSOverride
-
-# Temporary files
 *.tmp
 *.temp
-
-# Cache
 .cache/
+.vscode/
 
-# Private Admin Files
-export.html
+# Dependencies
+node_modules/
