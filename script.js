@@ -259,6 +259,10 @@ function initColorTheme() {
       closeThemeMenu();
     }
   });
+
+  // Adjust positioning on resize or orientation change
+  window.addEventListener("resize", adjustThemeMenuPosition);
+  window.addEventListener("orientationchange", adjustThemeMenuPosition);
 }
 
 function toggleThemeMenu() {
@@ -274,6 +278,31 @@ function toggleThemeMenu() {
     dropdown.style.display = "block";
     wrapper.classList.add("open");
     if (btn) btn.setAttribute("aria-expanded", "true");
+    adjustThemeMenuPosition();
+  }
+}
+
+function adjustThemeMenuPosition() {
+  const dropdown = document.getElementById("theme-menu-dropdown");
+  if (!dropdown || dropdown.style.display === "none") return;
+
+  // Clear manual coordinates to let CSS responsive layout evaluate first
+  dropdown.style.left = "";
+  dropdown.style.right = "";
+
+  const rect = dropdown.getBoundingClientRect();
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  // Boundary guard for any mobile/desktop viewport edge collision:
+  // If left edge overflows the screen (x < 6px)
+  if (rect.left < 6) {
+    dropdown.style.left = "0";
+    dropdown.style.right = "auto";
+  }
+  // If right edge overflows the screen
+  else if (rect.right > viewportWidth - 6) {
+    dropdown.style.right = "0";
+    dropdown.style.left = "auto";
   }
 }
 
@@ -281,7 +310,11 @@ function closeThemeMenu() {
   const dropdown = document.getElementById("theme-menu-dropdown");
   const wrapper = document.getElementById("theme-dropdown-wrapper");
   const btn = document.getElementById("theme-menu-btn");
-  if (dropdown) dropdown.style.display = "none";
+  if (dropdown) {
+    dropdown.style.display = "none";
+    dropdown.style.left = "";
+    dropdown.style.right = "";
+  }
   if (wrapper) wrapper.classList.remove("open");
   if (btn) btn.setAttribute("aria-expanded", "false");
 }
