@@ -389,6 +389,17 @@ function switchTab(tab) {
     learnSection.style.display = "block";
     renderLearnMode();
   }
+
+  // Scroll to the very beginning of the page so the user never lands at the bottom
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
 }
 
 /* ==========================================================================
@@ -747,6 +758,11 @@ function restartQuiz() {
   document.getElementById("start-screen").style.display = "block";
 
   updateAvailableQuestionHint();
+
+  // Reset scroll to top
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 /* ==========================================================================
