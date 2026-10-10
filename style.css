@@ -290,6 +290,15 @@ body {
   flex-direction: column;
 }
 
+/* Disable scroll anchoring so view transitions do not lock viewport to previous scroll position */
+.app-container,
+#quiz-section,
+#learn-section,
+#learn-cards-container,
+#quiz-container {
+  overflow-anchor: none;
+}
+
 /* ==========================================================================
    HEADER & TOP BAR
    ========================================================================== */

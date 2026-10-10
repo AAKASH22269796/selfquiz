@@ -372,6 +372,17 @@ function initNameInput() {
 function switchTab(tab) {
   currentTab = tab;
 
+  // Defocus any clicked button to avoid browser focus-scroll retention
+  if (document.activeElement && typeof document.activeElement.blur === "function") {
+    document.activeElement.blur();
+  }
+
+  // Temporarily disable smooth scroll so the jump is instant and not cancelled by layout changes
+  const html = document.documentElement;
+  const originalScrollBehavior = html.style.scrollBehavior;
+  html.style.scrollBehavior = "auto";
+  document.body.style.scrollBehavior = "auto";
+
   const quizTabBtn = document.getElementById("tab-quiz-btn");
   const learnTabBtn = document.getElementById("tab-learn-btn");
   const quizSection = document.getElementById("quiz-section");
@@ -390,16 +401,39 @@ function switchTab(tab) {
     renderLearnMode();
   }
 
-  // Scroll to the very beginning of the page so the user never lands at the bottom
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
+  const targetEl = tab === "learn" ? (document.querySelector(".learn-header") || learnSection) : quizSection;
 
-  requestAnimationFrame(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  function forceScrollToTop() {
+    window.scrollTo(0, 0);
+    if (document.scrollingElement) {
+      document.scrollingElement.scrollTop = 0;
+    }
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+
+    if (targetEl && typeof targetEl.scrollIntoView === "function") {
+      targetEl.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+  }
+
+  // 1. Immediate scroll
+  forceScrollToTop();
+
+  // 2. Next animation frame
+  requestAnimationFrame(() => {
+    forceScrollToTop();
   });
+
+  // 3. Post-layout tick (after DOM nodes settle)
+  setTimeout(() => {
+    forceScrollToTop();
+    html.style.scrollBehavior = originalScrollBehavior;
+    document.body.style.scrollBehavior = "";
+  }, 60);
+
+  setTimeout(() => {
+    forceScrollToTop();
+  }, 150);
 }
 
 /* ==========================================================================
@@ -750,6 +784,15 @@ function restartQuiz() {
   selectedQuestions = [];
   userAnswers = {};
 
+  if (document.activeElement && typeof document.activeElement.blur === "function") {
+    document.activeElement.blur();
+  }
+
+  const html = document.documentElement;
+  const originalScrollBehavior = html.style.scrollBehavior;
+  html.style.scrollBehavior = "auto";
+  document.body.style.scrollBehavior = "auto";
+
   document.getElementById("quiz-container").innerHTML = "";
   document.getElementById("quiz-container").style.display = "none";
   document.getElementById("result-card").style.display = "none";
@@ -759,10 +802,26 @@ function restartQuiz() {
 
   updateAvailableQuestionHint();
 
-  // Reset scroll to top
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
+  function forceScrollStart() {
+    window.scrollTo(0, 0);
+    if (document.scrollingElement) {
+      document.scrollingElement.scrollTop = 0;
+    }
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const startCard = document.getElementById("start-screen");
+    if (startCard && typeof startCard.scrollIntoView === "function") {
+      startCard.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+  }
+
+  forceScrollStart();
+
+  setTimeout(() => {
+    forceScrollStart();
+    html.style.scrollBehavior = originalScrollBehavior;
+    document.body.style.scrollBehavior = "";
+  }, 60);
 }
 
 /* ==========================================================================
