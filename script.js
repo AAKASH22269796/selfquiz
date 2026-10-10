@@ -194,7 +194,8 @@ allQuestions.forEach((q, index) => {
    INITIALIZATION & THEME MANAGEMENT
    ========================================================================== */
 const COLOR_THEMES = {
-  default: { name: "Default Slate", label: "Theme", color: "#6366f1" },
+  default: { name: "Default Slate", label: "Default", color: "#6366f1" },
+  nostalgia: { name: "Nostalgia", label: "Nostalgia", color: "#ff7a18", background: "linear-gradient(135deg, #ff7a18, #ffb347)" },
   sage: { name: "Forest Sage", label: "Sage", color: "#10b981" },
   ocean: { name: "Ocean Mist", label: "Ocean", color: "#0284c7" },
   parchment: { name: "Warm Parchment", label: "Parchment", color: "#d97706" },
@@ -202,7 +203,7 @@ const COLOR_THEMES = {
   peach: { name: "Desert Blossom", label: "Blossom", color: "#e11d48" }
 };
 
-let activeColorTheme = "default";
+let activeColorTheme = "nostalgia";
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -241,7 +242,13 @@ function updateThemeButtonUI() {
 
 /* --- Peaceful Color Palette Management --- */
 function initColorTheme() {
-  const savedColor = localStorage.getItem("selfquiz_color_theme") || "default";
+  let savedColor = localStorage.getItem("selfquiz_color_theme");
+  // Default to nostalgia if not set or on first load with Nostalgia theme
+  if (!savedColor || (savedColor === "default" && !localStorage.getItem("selfquiz_theme_v2"))) {
+    savedColor = "nostalgia";
+    localStorage.setItem("selfquiz_color_theme", "nostalgia");
+    localStorage.setItem("selfquiz_theme_v2", "true");
+  }
   applyColorTheme(savedColor);
 
   // Close dropdown on outside click
@@ -326,7 +333,7 @@ function selectTheme(themeId) {
 
 function applyColorTheme(themeId) {
   if (!COLOR_THEMES[themeId]) {
-    themeId = "default";
+    themeId = "nostalgia";
   }
   activeColorTheme = themeId;
 
@@ -354,7 +361,12 @@ function applyColorTheme(themeId) {
     labelEl.innerText = themeMeta.label || "Theme";
   }
   if (swatchEl) {
-    swatchEl.style.backgroundColor = themeMeta.color;
+    if (themeMeta.background) {
+      swatchEl.style.background = themeMeta.background;
+    } else {
+      swatchEl.style.background = "";
+      swatchEl.style.backgroundColor = themeMeta.color;
+    }
   }
 }
 
