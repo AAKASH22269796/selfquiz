@@ -160,28 +160,19 @@ const allQuestions = [
   { question: "Mastery goals are those that are geared towards the acquisition or improvement of", options: ["Skills", "Number of students in a classroom", "Teacher feedback", "None of the given"], answer: 0 }, /*[cite: 40] */
   { question: "The vast majority of formative assessment is", options: ["Formal", "Incorrect", "Written", "informal"], answer: 3 }, /*[cite: 40] */
   /* -------- SET 11 (Week 11) -------- */
-  { question: "There is one universal curriculum to become a sustainable leader.", options: ["True", "False"], answer: 1 },
-  { question: "A sustainable leader has a ___ decision-making style.", options: ["forceful", "autocratic", "selfish", "consensual"], answer: 3 },
-  { question: "A sustainable leader must have awareness of ___ contexts.", options: ["ecological", "economic", "political", "all of the given"], answer: 3 },
-  { question: "The 'results' component of sustainable leadership relates with the ___ dimension.", options: ["institutional", "social", "environmental", "economic"], answer: 3 },
-  { question: "___ India gives a theory U that consists of aspects like co-initiating, co-sensing and co-evolving among others.", options: ["HEAD", "SAID", "GEAD", "LEAD"], answer: 3 },
-  { question: "The ___ component in theory 'U' entails prototyping the new.", options: ["co-evolving", "co-initiating", "co-sensing", "co-creating"], answer: 3 },
-  { question: "Which of the following factor does not aid in becoming a global leader?", options: ["willingness to stay in one's comfort zone", "undesirable circumstances like poverty", "confidence to embrace risk", "willingness to learn from failure"], answer: 0 },
-  { question: "According to Maxwell, there are ___ levels of leadership.", options: ["15", "25", "50", "5"], answer: 3 },
-  { question: "The ___, in relation to their Global Leadership Fellowship program, describes global leaders as dynamic, engaged and driven individuals who possess a high degree of intellectual curiosity and service-oriented humility; an entrepreneur in the global public interest with a profound sense of purpose regardless of the scale and scope of the challenge.", options: ["World Health Organization", "World Labor Organization", "World Economic Forum", "World Political Forum"], answer: 2 },
-  { question: "SDG ___ is to make cities and human settlements inclusive, safe, resilient, and sustainable.", options: ["2", "10", "11", "5"], answer: 2 },
-
+  { question: "Social cognition has a protracted development through infancy to", options: ["teenage", "old-age", "adulthood", "death"], answer: 2 }, /*[cite: 1] */
+  { question: "Which of the following abilities comes under social cognition?", options: ["Face processing", "Joint attention", "Theory of mind", "All of the given"], answer: 3 }, /*[cite: 1] */
+  { question: "Under social cognition, abilities involved in affective processing are often called", options: ["hot", "cold", "white", "black"], answer: 0 }, /*[cite: 1] */
+  { question: "Social schemas refer to people's mental representations of social", options: ["values", "memories", "skills", "patterns"], answer: 3 }, /*[cite: 2] */
+  { question: "During the earliest stages of development, children are very ___ -centric. They see the world from their own perspective and struggle to think about how other people may view the world.", options: ["selfish", "ego", "conscious", "emotional"], answer: 1 }, /*[cite: 2] */
+  { question: "A theory of mind refers to a person's ability to understand and think about the ___ of other people.", options: ["behaviors", "family backgrounds", "mental states", "language"], answer: 2 }, /*[cite: 2, 3] */
+  { question: "The same social behavior in one cultural setting might have a very different meaning and interpretation if it were to occur or be observed in another culture.", options: ["True", "False"], answer: 0 }, /*[cite: 3] */
+  { question: "Social cognitive theory by Bandura focuses on concepts of", options: ["self-efficacy", "modeling", "observational learning", "all of the given"], answer: 3 }, /*[cite: 3] */
+  { question: "The central tenet of Bandura's social-cognitive theory is that people seek to develop a sense of ___ over the important events in their lives.", options: ["agency", "dependency", "attachment", "emotion"], answer: 0 }, /*[cite: 3] */
+  { question: "___ hypothesis suggests that social processes influence how information is selected, organized, integrated, and retrieved.", options: ["activation", "cognitive influence", "interaction", "social cue strength"], answer: 1 } /*[cite: 4] */
   /* -------- SET 12 (Week 12) -------- */
-  { question: "___resources are those that exist in the absence of human intervention.", options: ["Artificial", "Natural", "Fake", "Real"], answer: 1 },
-  { question: "The food sector accounts for around ___ percent of total greenhouse gas emissions.", options: ["3", "22", "100", "90"], answer: 1 },
-  { question: "Which of the following is not a solution for natural resource depletion?", options: ["use less renewable energy", "promote sustainable fishing growth", "reduce food waste", "treat wastewater before discharging"], answer: 0 },
-  { question: "In order to support reform on green fiscal policy, UN Environment has established the ____ in partnership with the International Monetary Fund.", options: ["Green Fiscal Policy Network", "Blue Fiscal Policy Network", "Green Fishery Policy Network", "Green Fiscal Policy Natural"], answer: 0 },
-  { question: "As responsible consumers, we should ask ourselves \"___\" before buying anything.", options: ["do I really need it?", "how long will I use it?", "can I borrow it from someone I know?", "all of the given"], answer: 3 },
-  { question: "A bulb thrown out after usage forms ___.", options: ["wet waste", "valuable waste", "responsible waste", "e-waste"], answer: 3 },
-  { question: "SDG _____ seeks to promote international trade, and help developing countries increase their exports to ensure a universal rules-based and equitable trading system that is fair, open and beneficial to all.", options: ["17", "2", "6", "11"], answer: 0 },
-  { question: "According to Gandhiji, wealth should be used for _____.", options: ["the betterment of the humanity", "personal indulgence", "conflicts", "politics"], answer: 0 },
-  { question: "The _____ initiated and spearheaded by Gandhiji is the preeminent prototype of small and cottage industries. Strengthening village economy, and thus, reducing excessive urbanization can make human settlements safe, resilient and sustainable.", options: ["Khadi Movement", "Salt March", "Cotton Movement", "Non-violent Protest"], answer: 0 },
-  { question: "_________ is the ability of a system to absorb disturbances & retain its basic function and structure.", options: ["resilience", "gratitude", "mindfulness", "sustainable consumption"], answer: 0 }
+
+
 ];
 
 // Assign unit index if not explicitly defined (10 questions per unit)
