@@ -1877,9 +1877,21 @@ body.dark[data-theme="nostalgia"] .score-number {
   color: #ffb347;
 }
 
-body.dark[data-theme="nostalgia"] .footer {
-  color: #aaaaaa;
+/* Nostalgia Theme Footer (High contrast & crystal-clear readability against purple gradient & dark background) */
+body[data-theme="nostalgia"]:not(.dark) .footer,
+body[data-theme="nostalgia"]:not(.dark) .footer p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  font-weight: 500;
 }
+
+body.dark[data-theme="nostalgia"] .footer,
+body.dark[data-theme="nostalgia"] .footer p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
 
 /* Classic Heartbeat Animation */
 @keyframes heartbeat {
