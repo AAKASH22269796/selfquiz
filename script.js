@@ -171,7 +171,7 @@ const allQuestions = [
   { question: "The central tenet of Bandura's social-cognitive theory is that people seek to develop a sense of ___ over the important events in their lives.", options: ["agency", "dependency", "attachment", "emotion"], answer: 0 }, /*[cite: 3] */
   { question: "___ hypothesis suggests that social processes influence how information is selected, organized, integrated, and retrieved.", options: ["activation", "cognitive influence", "interaction", "social cue strength"], answer: 1 }, /*[cite: 4] */
   /* -------- SET 12 (Week 12) -------- */
-  { question: "Sustainability in economic sustainability is ___ .", options: ["multidimensional", "bidimensional", "unidimensional", "none of the given"], answer: 0 }, /*[cite: 1]*/
+  { question: "Sustainability in economic sustainability is ___ .", options: ["multidimensional", "bidimensional", "unidimensional", "none of the given"], answer: 2 }, /*[cite: 1]*/
   { question: "The term \"sustainable development\" was first mentioned in a book related to the 1972 UN Stockholm conference on ___ .", options: ["water", "poverty", "economic crisis", "human environment"], answer: 3 }, /*[cite: 1]*/
   { question: "Environmental sustainability focuses on impacts of processes, products and services on ___ .", options: ["water", "biodiversity", "human health", "all of the given"], answer: 3 }, /*[cite: 2]*/
   { question: "Which of the following does not come under social sustainability?", options: ["Labour practices", "Revenue generation", "Human rights", "Business ethics"], answer: 1 }, /*[cite: 2]*/
