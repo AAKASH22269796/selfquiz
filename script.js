@@ -25,7 +25,7 @@ let userAnswers = {};
      options: ["Option 1", "Option 2", "Option 3", "Option 4"],
      answer: 0 // Index of correct option (0 = first, 1 = second, etc.)
    }
-   Units (Week 0 to Week 12) are automatically mapped every 10 questions,
+   Units (Week 0 to Week 12, with Week 7A & 7B) are automatically mapped every 10 questions,
    or you can specify `unit: 0` explicitly on each object.
    ========================================================================== */
 const allQuestions = [
@@ -112,7 +112,7 @@ const allQuestions = [
   { question: "Having students create autobiographies is an example of creating opportunities for ___ .", options: ["emotional labor", "emotional contagion", "metacognition", "none of the given"], answer: 2 }, /*[cite: 29] */
   { question: "Which of the following is not true about management of emotions?", options: ["It is essentially a private act", "It is directly regulated by others", "It is influenced by cultural norms", "It is influenced by what society defines as appropriate to feel and express"], answer: 1 }, /*[cite: 29] */
 
-  /* -------- SET 7 (Week 7) -------- */
+  /* -------- SET 7A (Week 7A) -------- */
   { question: "Which of the following is false about learning according to Gagne's definition?", options: ["It is a change in human disposition", "It persists over a period of time", "It is simply ascribable to processes of growth", "None of the above"], answer: 2 }, /*[cite: 30] */
   { question: "Manual or physical skills come under ___ component of Bloom's taxonomy.", options: ["Cognitive", "Affective", "Psychomotor", "Physical"], answer: 2 }, /*[cite: 30] */
   { question: "Reflection, learning and education was explored by ___ .", options: ["Carl Rogers", "John Watson", "Benjamin Bloom", "John Dewey"], answer: 3 }, /*[cite: 31] */
@@ -123,6 +123,18 @@ const allQuestions = [
   { question: "People with ___ learning style are prone to sorting their ideas after speaking, rather than thinking ideas through before.", options: ["logical", "solitary", "visual", "auditory"], answer: 3 }, /*[cite: 32] */
   { question: "Which of the following statements is false?", options: ["Effective instruction is static", "Effective instruction is eclectic", "Effective instruction is generative", "Effective instruction is interactive"], answer: 0 }, /*[cite: 33] */
   { question: "In ADDIE model, I stand for ___ .", options: ["instruction", "implementation", "integration", "induction"], answer: 1 }, /*[cite: 33] */
+
+  /* -------- SET 7B (Week 7B) -------- */
+  { question: "Simon defined learning as changes in a system that result in ___ over time on tasks similar to those done previously.", options: ["boredom", "decreased anxiety", "improved performance", "reduced performance"], answer: 2 }, /*[cite: 1] */
+  { question: "Robert Gagne defined learning as", options: ["a change in human disposition or capacity", "a change that persists over a period of time", "a change not simply ascribable to processes of growth", "all of the given"], answer: 3 }, /*[cite: 1] */
+  { question: "Psychomotor skills are ___ skills.", options: ["cognitive", "spiritual", "mental", "physical"], answer: 3 }, /*[cite: 1] */
+  { question: "Returning to experience refers to", options: ["attending to feelings", "re-examining experience in the light of one's intent and existing knowledge", "using helpful feelings and removing obstructive ones", "recalling or detailing salient events"], answer: 3 }, /*[cite: 1] */
+  { question: "Which of the following assumptions does not come under the behaviorist orientation to learning?", options: ["Differences between individuals are important as they will affect learning", "Observable behavior rather than internal thought processes are the focus of study.", "Environment shapes one's behavior", "The principle of contiguity is central"], answer: 0 }, /*[cite: 1] */
+  { question: "Reinforcement can come through sharing of results rather than a reward.", options: ["True", "False"], answer: 0 }, /*[cite: 1] */
+  { question: "___ has contributed to the humanistic orientations to learning.", options: ["linguistic", "kinesthetic", "visual", "Carl Rogers"], answer: 3 }, /*[cite: 2] */
+  { question: "In the process of learning, which of the following is not a component of output?", options: ["certification", "attitude change", "knowledge enhancement", "training plan"], answer: 3 }, /*[cite: 2] */
+  { question: "Ambience, space and decorum do not affect learning.", options: ["True", "False"], answer: 1 }, /*[cite: 2] */
+  { question: "Role-playing can motivate ___ type of learners effectively.", options: ["solitary", "social", "reading/writing", "logical/analytical"], answer: 1 }, /*[cite: 2] */
 
   /* -------- SET 8 (Week 8) -------- */
   { question: "The word 'pedagogy' has been derived from the ___ word \"pedagogue\".", options: ["Latin", "Sanskrit", "Greek", "English"], answer: 2 }, /*[cite: 34] */
@@ -183,6 +195,28 @@ const allQuestions = [
   { question: "___ competency is the ability to reflect on one’s own role in the local community and (global) society.", options: ["collaboration", "self-awareness", "strategic", "normative"], answer: 1 } /*[cite: 5]*/
 ];
 
+// Unit Name Mapping: 14 units (0 to 13)
+const UNIT_NAMES = {
+  0: "Week 0",
+  1: "Week 1",
+  2: "Week 2",
+  3: "Week 3",
+  4: "Week 4",
+  5: "Week 5",
+  6: "Week 6",
+  7: "Week 7A",
+  8: "Week 7B",
+  9: "Week 8",
+  10: "Week 9",
+  11: "Week 10",
+  12: "Week 11",
+  13: "Week 12"
+};
+
+function getUnitLabel(unit) {
+  return UNIT_NAMES[unit] !== undefined ? UNIT_NAMES[unit] : `Week ${unit}`;
+}
+
 // Assign unit index if not explicitly defined (10 questions per unit)
 allQuestions.forEach((q, index) => {
   if (q.unit === undefined) {
@@ -197,7 +231,7 @@ allQuestions.forEach((q, index) => {
 const activeColorTheme = "nostalgia";
 
 // --- Week Selection State ---
-let selectedWeeks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let selectedWeeks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -320,6 +354,8 @@ function initWeekCheckboxes() {
   const grid = document.getElementById("weeks-checkbox-grid");
   if (!grid) return;
 
+  const totalUnits = Object.keys(UNIT_NAMES).length;
+
   // Retrieve saved weeks if available
   const saved = localStorage.getItem("selfquiz_selected_weeks");
   if (saved) {
@@ -327,6 +363,11 @@ function initWeekCheckboxes() {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length > 0) {
         selectedWeeks = parsed;
+        // If user previously had all 13 weeks selected (0..12), auto-include newly added sets
+        if (selectedWeeks.length === 13 && !selectedWeeks.includes(13)) {
+          selectedWeeks = Array.from({ length: totalUnits }, (_, i) => i);
+          localStorage.setItem("selfquiz_selected_weeks", JSON.stringify(selectedWeeks));
+        }
       }
     } catch (e) {
       console.warn("Could not parse saved weeks:", e);
@@ -353,7 +394,7 @@ function initWeekCheckboxes() {
           <span class="week-check-icon">✓</span>
         </div>
         <div class="week-check-info">
-          <span class="week-check-title">Week ${u}</span>
+          <span class="week-check-title">${getUnitLabel(u)}</span>
           <span class="week-check-count">${count} Questions</span>
         </div>
       </label>
@@ -444,14 +485,14 @@ function updateAvailableQuestionHint() {
   const summaryEl = document.getElementById("selected-weeks-summary");
   const numInput = document.getElementById("num");
 
+  const totalWeeks = Object.keys(UNIT_NAMES).length;
   if (summaryEl) {
-    const totalWeeks = 13;
     if (selectedWeeks.length === totalWeeks) {
       summaryEl.innerText = `All ${totalWeeks} Weeks Selected (${pool.length} Qs)`;
     } else if (selectedWeeks.length === 0) {
       summaryEl.innerText = `0 Weeks Selected (Select at least 1)`;
     } else if (selectedWeeks.length === 1) {
-      summaryEl.innerText = `Week ${selectedWeeks[0]} Selected (${pool.length} Qs)`;
+      summaryEl.innerText = `${getUnitLabel(selectedWeeks[0])} Selected (${pool.length} Qs)`;
     } else {
       summaryEl.innerText = `${selectedWeeks.length} of ${totalWeeks} Weeks Selected (${pool.length} Qs)`;
     }
@@ -536,14 +577,15 @@ function startQuiz() {
 
   // Badge info
   const unitBadge = document.getElementById("quiz-unit-badge");
-  if (selectedWeeks.length === 13) {
-    unitBadge.innerText = `All Weeks (0–12)`;
+  const totalWeeks = Object.keys(UNIT_NAMES).length;
+  if (selectedWeeks.length === totalWeeks) {
+    unitBadge.innerText = `All Units (140 Qs)`;
   } else if (selectedWeeks.length === 1) {
-    unitBadge.innerText = `Week ${selectedWeeks[0]}`;
-  } else if (selectedWeeks.length <= 4) {
-    unitBadge.innerText = `Weeks ${selectedWeeks.join(", ")}`;
+    unitBadge.innerText = getUnitLabel(selectedWeeks[0]);
+  } else if (selectedWeeks.length <= 3) {
+    unitBadge.innerText = selectedWeeks.map(u => getUnitLabel(u)).join(", ");
   } else {
-    unitBadge.innerText = `${selectedWeeks.length} Weeks Selected (${selectedQuestions.length} Qs)`;
+    unitBadge.innerText = `${selectedWeeks.length} Units Selected (${selectedQuestions.length} Qs)`;
   }
   unitBadge.style.display = "inline-block";
 
@@ -808,10 +850,11 @@ function initLearnFilters() {
   const select = document.getElementById("learn-unit-select");
   if (!select) return;
 
-  select.innerHTML = `<option value="all">All Units (Weeks 0 - 12)</option>`;
-  for (let i = 0; i <= 12; i++) {
-    select.innerHTML += `<option value="${i}">Week ${i}</option>`;
-  }
+  select.innerHTML = `<option value="all">All Units (Weeks 0 - 12, with 7A &amp; 7B)</option>`;
+  const availableUnits = Object.keys(UNIT_NAMES).map(Number).sort((a, b) => a - b);
+  availableUnits.forEach(u => {
+    select.innerHTML += `<option value="${u}">${getUnitLabel(u)}</option>`;
+  });
 }
 
 function renderLearnMode() {
@@ -877,7 +920,7 @@ function renderLearnMode() {
     card.innerHTML = `
       <div class="learn-card-top">
         <div class="learn-card-meta">
-          <span class="unit-badge">Week ${q.unit !== undefined ? q.unit : Math.floor(index / 10)}</span>
+          <span class="unit-badge">${getUnitLabel(q.unit !== undefined ? q.unit : Math.floor(index / 10))}</span>
           <span class="learn-q-index">Question #${index + 1}</span>
         </div>
       </div>

@@ -69,7 +69,7 @@
           <div class="week-selection-header">
             <div class="week-selection-title-wrap">
               <label class="form-label" style="margin-bottom: 0;">Select Weeks / Quizzes</label>
-              <span id="selected-weeks-summary" class="selected-weeks-summary">13 of 13 Weeks Selected</span>
+              <span id="selected-weeks-summary" class="selected-weeks-summary">14 of 14 Weeks Selected</span>
             </div>
             <div class="week-selection-actions">
               <button type="button" class="btn-week-action" onclick="selectAllWeeks(true)">Select All</button>
@@ -84,7 +84,7 @@
         <div class="form-group">
           <div class="form-label">
             <span>Number of Questions</span>
-            <span id="pool-count-hint" style="color: var(--text-muted); font-weight: normal; font-size: 0.8rem;">(130
+            <span id="pool-count-hint" style="color: var(--text-muted); font-weight: normal; font-size: 0.8rem;">(140
               questions available)</span>
           </div>
           <input type="number" id="num" class="form-control" placeholder="e.g. 10" value="10" min="1">
@@ -162,7 +162,7 @@
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label" for="learn-unit-select">Filter by Unit / Week</label>
             <select id="learn-unit-select" class="form-control" onchange="renderLearnMode()">
-              <option value="all">All Units (Weeks 0 - 12)</option>
+              <option value="all">All Units (Weeks 0 - 12, with 7A &amp; 7B)</option>
             </select>
           </div>
 
@@ -177,7 +177,7 @@
         </div>
 
         <div class="learn-stats-bar">
-          <span id="learn-count-stats">Showing 130 of 130 questions</span>
+          <span id="learn-count-stats">Showing 140 of 140 questions</span>
           <button class="btn-secondary-sm" onclick="clearLearnSearch()"
             style="padding: 0.25rem 0.6rem; font-size: 0.78rem;">
             Reset Filters

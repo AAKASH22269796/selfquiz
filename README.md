@@ -6,7 +6,7 @@ A modern, eye-friendly web application for practicing and mastering weekly self-
 
 - **📝 Practice Quiz Mode:**
   - **Shuffle Mode:** Random questions drawn from across all units.
-  - **Unit-Wise Mode:** Focused revision for specific weeks (Weeks 0 – 12).
+  - **Unit-Wise Mode:** Focused revision for specific weeks (Weeks 0 – 12 with Week 7A & 7B, 140 questions total).
   - **Customizable Question Count:** Quick chips (5, 10, 15, 20, All) or custom input.
   - **Timed Testing:** Subtle timer with gentle visual alerts.
   - **Instant Review:** Clean breakdown of correct answers vs. chosen responses with score accuracy.
