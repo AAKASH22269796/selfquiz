@@ -551,16 +551,16 @@ function startQuiz() {
   // High precision shuffling:
   // 1. Shuffle the question pool
   const shuffledPool = shuffleArray([...questionPool]);
-  
+
   // 2. Pick N questions and shuffle options inside each question
   selectedQuestions = shuffledPool.slice(0, n).map(q => {
     // Deep clone question
     const clone = JSON.parse(JSON.stringify(q));
     const correctText = clone.options[clone.answer];
-    
+
     // Shuffle options inside the question
     shuffleArray(clone.options);
-    
+
     // High precision update of the correct answer index
     clone.answer = clone.options.indexOf(correctText);
     return clone;
@@ -590,7 +590,7 @@ function startQuiz() {
   unitBadge.style.display = "inline-block";
 
   // Timer: 12 seconds per question
-  timeLeft = selectedQuestions.length * 12;
+  timeLeft = selectedQuestions.length * 60;
   startTimer();
 
   renderQuizQuestions();
