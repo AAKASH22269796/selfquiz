@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=1.4">
+  <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 
 <body>
@@ -30,87 +30,7 @@
       </div>
 
       <div class="header-actions">
-        <!-- Peaceful Themes Dropdown -->
-        <div class="theme-dropdown-wrapper" id="theme-dropdown-wrapper">
-          <button id="theme-menu-btn" class="btn-secondary-sm theme-menu-btn" onclick="toggleThemeMenu()" aria-label="Choose color theme" aria-expanded="false" aria-haspopup="true">
-            <span class="theme-indicator-swatch" id="theme-indicator-swatch"></span>
-            <span id="theme-menu-label">Nostalgia</span>
-            <span class="theme-menu-arrow">▾</span>
-          </button>
-
-          <div id="theme-menu-dropdown" class="theme-menu-dropdown" style="display: none;">
-            <div class="theme-dropdown-header">
-              <span class="theme-dropdown-heading">Theme Palettes</span>
-              <span class="theme-dropdown-sub">Classic nostalgia &amp; eye-friendly vibes</span>
-            </div>
-            <div class="theme-options-list">
-              <button type="button" class="theme-option-item" data-theme-id="default" onclick="selectTheme('default')">
-                <span class="theme-swatch-duo swatch-default"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Default Slate</span>
-                  <span class="theme-option-desc">Clean neutral &amp; indigo</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-
-              <button type="button" class="theme-option-item active" data-theme-id="nostalgia" onclick="selectTheme('nostalgia')">
-                <span class="theme-swatch-duo swatch-nostalgia"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Nostalgia</span>
-                  <span class="theme-option-desc">Classic gradient &amp; orange like before</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-
-              <button type="button" class="theme-option-item" data-theme-id="sage" onclick="selectTheme('sage')">
-                <span class="theme-swatch-duo swatch-sage"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Forest Sage</span>
-                  <span class="theme-option-desc">Botanical mint &amp; eucalyptus</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-
-              <button type="button" class="theme-option-item" data-theme-id="ocean" onclick="selectTheme('ocean')">
-                <span class="theme-swatch-duo swatch-ocean"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Ocean Mist</span>
-                  <span class="theme-option-desc">Calming sky &amp; coastal breeze</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-
-              <button type="button" class="theme-option-item" data-theme-id="parchment" onclick="selectTheme('parchment')">
-                <span class="theme-swatch-duo swatch-parchment"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Warm Parchment</span>
-                  <span class="theme-option-desc">Cozy ivory &amp; warm amber</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-
-              <button type="button" class="theme-option-item" data-theme-id="lavender" onclick="selectTheme('lavender')">
-                <span class="theme-swatch-duo swatch-lavender"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Lavender Mist</span>
-                  <span class="theme-option-desc">Soothing lilac &amp; twilight</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-
-              <button type="button" class="theme-option-item" data-theme-id="peach" onclick="selectTheme('peach')">
-                <span class="theme-swatch-duo swatch-peach"></span>
-                <div class="theme-option-info">
-                  <span class="theme-option-name">Desert Blossom</span>
-                  <span class="theme-option-desc">Soft peach &amp; gentle rose</span>
-                </div>
-                <span class="theme-check">✓</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dark / Light Mode Toggle -->
+        <!-- Dark / Nostalgia Mode Toggle -->
         <button id="theme-toggle-btn" class="btn-secondary-sm" onclick="toggleTheme()" aria-label="Toggle theme">
           🌙 Dark
         </button>
@@ -136,7 +56,7 @@
       <section id="start-screen" class="card start-card">
         <div class="card-header">
           <h2 class="card-title">Test Your Knowledge</h2>
-          <p class="card-subtitle">Set your practice preferences and test yourself with timed questions.</p>
+          <p class="card-subtitle">Select weeks to practice and test yourself with randomized questions &amp; options.</p>
         </div>
 
         <div class="form-group">
@@ -144,40 +64,21 @@
           <input type="text" id="username" class="form-control" placeholder="Enter your name" autocomplete="name">
         </div>
 
-        <div class="form-group">
-          <label class="form-label">Quiz Mode</label>
-          <div class="mode-toggle-group">
-            <div id="mode-card-shuffle" class="mode-card selected" onclick="setQuizMode('shuffle')">
-              <input type="radio" id="mode-shuffle" name="quiz-mode" value="shuffle" checked>
-              <span class="mode-card-title">🔀 Shuffle All</span>
-              <span class="mode-card-desc">Random questions from all weeks</span>
+        <!-- Week Selection Checkbox Grid (Mobile & Desktop Friendly) -->
+        <div class="form-group week-selection-group">
+          <div class="week-selection-header">
+            <div class="week-selection-title-wrap">
+              <label class="form-label" style="margin-bottom: 0;">Select Weeks / Quizzes</label>
+              <span id="selected-weeks-summary" class="selected-weeks-summary">13 of 13 Weeks Selected</span>
             </div>
-            <div id="mode-card-unit" class="mode-card" onclick="setQuizMode('unit')">
-              <input type="radio" id="mode-unit" name="quiz-mode" value="unit">
-              <span class="mode-card-title">📑 Unit-Wise</span>
-              <span class="mode-card-desc">Practice a specific week</span>
+            <div class="week-selection-actions">
+              <button type="button" class="btn-week-action" onclick="selectAllWeeks(true)">Select All</button>
+              <button type="button" class="btn-week-action" onclick="selectAllWeeks(false)">Clear</button>
             </div>
           </div>
-        </div>
-
-        <div id="unit-select-group" class="form-group" style="display: none;">
-          <label class="form-label" for="unit-select">Select Week</label>
-          <select id="unit-select" class="form-control" onchange="updateAvailableQuestionHint()">
-            <option value="" disabled selected>Select Week (0 to 12)</option>
-            <option value="0">Week 0</option>
-            <option value="1">Week 1</option>
-            <option value="2">Week 2</option>
-            <option value="3">Week 3</option>
-            <option value="4">Week 4</option>
-            <option value="5">Week 5</option>
-            <option value="6">Week 6</option>
-            <option value="7">Week 7</option>
-            <option value="8">Week 8</option>
-            <option value="9">Week 9</option>
-            <option value="10">Week 10</option>
-            <option value="11">Week 11</option>
-            <option value="12">Week 12</option>
-          </select>
+          <div class="weeks-checkbox-grid" id="weeks-checkbox-grid">
+            <!-- Dynamically populated with all weeks -->
+          </div>
         </div>
 
         <div class="form-group">
@@ -322,7 +223,7 @@
   </script>
 
   <!-- Application Logic -->
-  <script src="script.js?v=1.3"></script>
+  <script src="script.js?v=2.0"></script>
 </body>
 
 </html>

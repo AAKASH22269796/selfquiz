@@ -192,28 +192,23 @@ allQuestions.forEach((q, index) => {
 
 /* ==========================================================================
    INITIALIZATION & THEME MANAGEMENT
+   Keep Nostalgic theme as standard and Dark option for eye-friendly sessions.
    ========================================================================== */
-const COLOR_THEMES = {
-  default: { name: "Default Slate", label: "Default", color: "#6366f1" },
-  nostalgia: { name: "Nostalgia", label: "Nostalgia", color: "#ff7a18", background: "linear-gradient(135deg, #ff7a18, #ffb347)" },
-  sage: { name: "Forest Sage", label: "Sage", color: "#10b981" },
-  ocean: { name: "Ocean Mist", label: "Ocean", color: "#0284c7" },
-  parchment: { name: "Warm Parchment", label: "Parchment", color: "#d97706" },
-  lavender: { name: "Lavender Mist", label: "Lavender", color: "#8b5cf6" },
-  peach: { name: "Desert Blossom", label: "Blossom", color: "#e11d48" }
-};
+const activeColorTheme = "nostalgia";
 
-let activeColorTheme = "nostalgia";
+// --- Week Selection State ---
+let selectedWeeks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
-  initColorTheme();
+  initWeekCheckboxes();
   initNameInput();
   initQuickCountChips();
   initLearnFilters();
 });
 
 function initTheme() {
+  document.body.setAttribute("data-theme", "nostalgia");
   const savedTheme = localStorage.getItem("selfquiz_theme");
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -237,137 +232,7 @@ function updateThemeButtonUI() {
   if (!btn) return;
   const isDark = document.body.classList.contains("dark");
   btn.innerHTML = isDark ? `☀️ Light` : `🌙 Dark`;
-  btn.title = isDark ? "Switch to eye-friendly light mode" : "Switch to soothing dark mode";
-}
-
-/* --- Peaceful Color Palette Management --- */
-function initColorTheme() {
-  let savedColor = localStorage.getItem("selfquiz_color_theme");
-  // Default to nostalgia if not set or on first load with Nostalgia theme
-  if (!savedColor || (savedColor === "default" && !localStorage.getItem("selfquiz_theme_v2"))) {
-    savedColor = "nostalgia";
-    localStorage.setItem("selfquiz_color_theme", "nostalgia");
-    localStorage.setItem("selfquiz_theme_v2", "true");
-  }
-  applyColorTheme(savedColor);
-
-  // Close dropdown on outside click
-  document.addEventListener("click", (e) => {
-    const wrapper = document.getElementById("theme-dropdown-wrapper");
-    if (wrapper && !wrapper.contains(e.target)) {
-      closeThemeMenu();
-    }
-  });
-
-  // Close dropdown on Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeThemeMenu();
-    }
-  });
-
-  // Adjust positioning on resize or orientation change
-  window.addEventListener("resize", adjustThemeMenuPosition);
-  window.addEventListener("orientationchange", adjustThemeMenuPosition);
-}
-
-function toggleThemeMenu() {
-  const dropdown = document.getElementById("theme-menu-dropdown");
-  const wrapper = document.getElementById("theme-dropdown-wrapper");
-  const btn = document.getElementById("theme-menu-btn");
-  if (!dropdown || !wrapper) return;
-
-  const isOpen = dropdown.style.display !== "none";
-  if (isOpen) {
-    closeThemeMenu();
-  } else {
-    dropdown.style.display = "block";
-    wrapper.classList.add("open");
-    if (btn) btn.setAttribute("aria-expanded", "true");
-    adjustThemeMenuPosition();
-  }
-}
-
-function adjustThemeMenuPosition() {
-  const dropdown = document.getElementById("theme-menu-dropdown");
-  if (!dropdown || dropdown.style.display === "none") return;
-
-  // Clear manual coordinates to let CSS responsive layout evaluate first
-  dropdown.style.left = "";
-  dropdown.style.right = "";
-
-  const rect = dropdown.getBoundingClientRect();
-  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-
-  // Boundary guard for any mobile/desktop viewport edge collision:
-  // If left edge overflows the screen (x < 6px)
-  if (rect.left < 6) {
-    dropdown.style.left = "0";
-    dropdown.style.right = "auto";
-  }
-  // If right edge overflows the screen
-  else if (rect.right > viewportWidth - 6) {
-    dropdown.style.right = "0";
-    dropdown.style.left = "auto";
-  }
-}
-
-function closeThemeMenu() {
-  const dropdown = document.getElementById("theme-menu-dropdown");
-  const wrapper = document.getElementById("theme-dropdown-wrapper");
-  const btn = document.getElementById("theme-menu-btn");
-  if (dropdown) {
-    dropdown.style.display = "none";
-    dropdown.style.left = "";
-    dropdown.style.right = "";
-  }
-  if (wrapper) wrapper.classList.remove("open");
-  if (btn) btn.setAttribute("aria-expanded", "false");
-}
-
-function selectTheme(themeId) {
-  applyColorTheme(themeId);
-  localStorage.setItem("selfquiz_color_theme", themeId);
-  closeThemeMenu();
-}
-
-function applyColorTheme(themeId) {
-  if (!COLOR_THEMES[themeId]) {
-    themeId = "nostalgia";
-  }
-  activeColorTheme = themeId;
-
-  if (themeId === "default") {
-    document.body.removeAttribute("data-theme");
-  } else {
-    document.body.setAttribute("data-theme", themeId);
-  }
-
-  // Update theme option active indicator in menu
-  const items = document.querySelectorAll(".theme-option-item");
-  items.forEach(item => {
-    if (item.getAttribute("data-theme-id") === themeId) {
-      item.classList.add("active");
-    } else {
-      item.classList.remove("active");
-    }
-  });
-
-  // Update button label and color dot
-  const themeMeta = COLOR_THEMES[themeId];
-  const labelEl = document.getElementById("theme-menu-label");
-  const swatchEl = document.getElementById("theme-indicator-swatch");
-  if (labelEl) {
-    labelEl.innerText = themeMeta.label || "Theme";
-  }
-  if (swatchEl) {
-    if (themeMeta.background) {
-      swatchEl.style.background = themeMeta.background;
-    } else {
-      swatchEl.style.background = "";
-      swatchEl.style.backgroundColor = themeMeta.color;
-    }
-  }
+  btn.title = isDark ? "Switch to Nostalgia light mode" : "Switch to soothing dark mode";
 }
 
 function initNameInput() {
@@ -449,26 +314,93 @@ function switchTab(tab) {
 }
 
 /* ==========================================================================
-   PRACTICE QUIZ CONFIGURATION & LOGIC
+   PRACTICE QUIZ CONFIGURATION & WEEK SELECTION
    ========================================================================== */
-function setQuizMode(mode) {
-  const cardShuffle = document.getElementById("mode-card-shuffle");
-  const cardUnit = document.getElementById("mode-card-unit");
-  const unitGroup = document.getElementById("unit-select-group");
-  const radioShuffle = document.getElementById("mode-shuffle");
-  const radioUnit = document.getElementById("mode-unit");
+function initWeekCheckboxes() {
+  const grid = document.getElementById("weeks-checkbox-grid");
+  if (!grid) return;
 
-  if (mode === "unit") {
-    radioUnit.checked = true;
-    cardUnit.classList.add("selected");
-    cardShuffle.classList.remove("selected");
-    unitGroup.style.display = "flex";
-  } else {
-    radioShuffle.checked = true;
-    cardShuffle.classList.add("selected");
-    cardUnit.classList.remove("selected");
-    unitGroup.style.display = "none";
+  // Retrieve saved weeks if available
+  const saved = localStorage.getItem("selfquiz_selected_weeks");
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        selectedWeeks = parsed;
+      }
+    } catch (e) {
+      console.warn("Could not parse saved weeks:", e);
+    }
   }
+
+  // Count questions per week
+  const weekCounts = {};
+  allQuestions.forEach(q => {
+    const u = q.unit !== undefined ? q.unit : 0;
+    weekCounts[u] = (weekCounts[u] || 0) + 1;
+  });
+
+  const availableUnits = Object.keys(weekCounts).map(Number).sort((a, b) => a - b);
+
+  let html = "";
+  availableUnits.forEach(u => {
+    const isChecked = selectedWeeks.includes(u);
+    const count = weekCounts[u] || 0;
+    html += `
+      <label class="week-check-card ${isChecked ? 'checked' : ''}" id="week-card-${u}">
+        <input type="checkbox" class="week-checkbox" value="${u}" ${isChecked ? 'checked' : ''} onchange="handleWeekToggle(${u}, this.checked)">
+        <div class="week-check-custom">
+          <span class="week-check-icon">✓</span>
+        </div>
+        <div class="week-check-info">
+          <span class="week-check-title">Week ${u}</span>
+          <span class="week-check-count">${count} Questions</span>
+        </div>
+      </label>
+    `;
+  });
+
+  grid.innerHTML = html;
+  updateAvailableQuestionHint();
+}
+
+function handleWeekToggle(unit, isChecked) {
+  if (isChecked) {
+    if (!selectedWeeks.includes(unit)) {
+      selectedWeeks.push(unit);
+      selectedWeeks.sort((a, b) => a - b);
+    }
+  } else {
+    selectedWeeks = selectedWeeks.filter(w => w !== unit);
+  }
+
+  const card = document.getElementById(`week-card-${unit}`);
+  if (card) {
+    card.classList.toggle("checked", isChecked);
+  }
+
+  localStorage.setItem("selfquiz_selected_weeks", JSON.stringify(selectedWeeks));
+  updateAvailableQuestionHint();
+}
+
+function selectAllWeeks(shouldSelectAll) {
+  const checkboxes = document.querySelectorAll(".week-checkbox");
+  selectedWeeks = [];
+
+  checkboxes.forEach(cb => {
+    cb.checked = shouldSelectAll;
+    const unit = parseInt(cb.value);
+    const card = document.getElementById(`week-card-${unit}`);
+    if (card) {
+      card.classList.toggle("checked", shouldSelectAll);
+    }
+    if (shouldSelectAll && !isNaN(unit)) {
+      selectedWeeks.push(unit);
+    }
+  });
+
+  selectedWeeks.sort((a, b) => a - b);
+  localStorage.setItem("selfquiz_selected_weeks", JSON.stringify(selectedWeeks));
   updateAvailableQuestionHint();
 }
 
@@ -482,11 +414,12 @@ function initQuickCountChips() {
       chip.classList.add("active");
       const val = chip.getAttribute("data-val");
 
+      const currentPool = getActiveQuestionPool();
       if (val === "all") {
-        const currentPool = getActiveQuestionPool();
         numInput.value = currentPool.length;
       } else {
-        numInput.value = val;
+        const parsedVal = parseInt(val);
+        numInput.value = Math.min(parsedVal, currentPool.length || parsedVal);
       }
     });
   });
@@ -499,21 +432,43 @@ function initQuickCountChips() {
 }
 
 function getActiveQuestionPool() {
-  const mode = document.querySelector('input[name="quiz-mode"]:checked')?.value || "shuffle";
-  if (mode === "unit") {
-    const unitVal = parseInt(document.getElementById("unit-select").value);
-    if (!isNaN(unitVal)) {
-      return allQuestions.filter(q => q.unit === unitVal);
-    }
+  if (!selectedWeeks || selectedWeeks.length === 0) {
+    return [];
   }
-  return allQuestions;
+  return allQuestions.filter(q => selectedWeeks.includes(q.unit));
 }
 
 function updateAvailableQuestionHint() {
   const pool = getActiveQuestionPool();
   const hintEl = document.getElementById("pool-count-hint");
+  const summaryEl = document.getElementById("selected-weeks-summary");
+  const numInput = document.getElementById("num");
+
+  if (summaryEl) {
+    const totalWeeks = 13;
+    if (selectedWeeks.length === totalWeeks) {
+      summaryEl.innerText = `All ${totalWeeks} Weeks Selected (${pool.length} Qs)`;
+    } else if (selectedWeeks.length === 0) {
+      summaryEl.innerText = `0 Weeks Selected (Select at least 1)`;
+    } else if (selectedWeeks.length === 1) {
+      summaryEl.innerText = `Week ${selectedWeeks[0]} Selected (${pool.length} Qs)`;
+    } else {
+      summaryEl.innerText = `${selectedWeeks.length} of ${totalWeeks} Weeks Selected (${pool.length} Qs)`;
+    }
+  }
+
   if (hintEl) {
     hintEl.innerText = `(${pool.length} questions available)`;
+  }
+
+  if (numInput) {
+    numInput.max = pool.length;
+    const activeChip = document.querySelector(".chip-btn.active");
+    if (activeChip && activeChip.getAttribute("data-val") === "all") {
+      numInput.value = pool.length;
+    } else if (parseInt(numInput.value) > pool.length && pool.length > 0) {
+      numInput.value = pool.length;
+    }
   }
 }
 
@@ -528,15 +483,15 @@ function startQuiz() {
   localStorage.setItem("selfquiz_username", name);
   window.username = name;
 
-  const questionPool = getActiveQuestionPool();
-  const mode = document.querySelector('input[name="quiz-mode"]:checked')?.value || "shuffle";
+  if (!selectedWeeks || selectedWeeks.length === 0) {
+    alert("Please select at least one week from the checkboxes to create your quiz.");
+    return;
+  }
 
-  if (mode === "unit") {
-    const unitVal = parseInt(document.getElementById("unit-select").value);
-    if (isNaN(unitVal)) {
-      alert("Please select a specific Unit / Week from the dropdown.");
-      return;
-    }
+  const questionPool = getActiveQuestionPool();
+  if (questionPool.length === 0) {
+    alert("No questions available for the selected weeks. Please select valid weeks.");
+    return;
   }
 
   const numInput = document.getElementById("num");
@@ -552,14 +507,20 @@ function startQuiz() {
     numInput.value = n;
   }
 
-  // Shuffle question pool and pick N questions
+  // High precision shuffling:
+  // 1. Shuffle the question pool
   const shuffledPool = shuffleArray([...questionPool]);
+  
+  // 2. Pick N questions and shuffle options inside each question
   selectedQuestions = shuffledPool.slice(0, n).map(q => {
-    // Deep clone
+    // Deep clone question
     const clone = JSON.parse(JSON.stringify(q));
     const correctText = clone.options[clone.answer];
-    // Shuffle options so they aren't always in identical positions
+    
+    // Shuffle options inside the question
     shuffleArray(clone.options);
+    
+    // High precision update of the correct answer index
     clone.answer = clone.options.indexOf(correctText);
     return clone;
   });
@@ -575,14 +536,16 @@ function startQuiz() {
 
   // Badge info
   const unitBadge = document.getElementById("quiz-unit-badge");
-  if (mode === "unit") {
-    const unitVal = document.getElementById("unit-select").value;
-    unitBadge.style.display = "inline-block";
-    unitBadge.innerText = `Week ${unitVal}`;
+  if (selectedWeeks.length === 13) {
+    unitBadge.innerText = `All Weeks (0–12)`;
+  } else if (selectedWeeks.length === 1) {
+    unitBadge.innerText = `Week ${selectedWeeks[0]}`;
+  } else if (selectedWeeks.length <= 4) {
+    unitBadge.innerText = `Weeks ${selectedWeeks.join(", ")}`;
   } else {
-    unitBadge.style.display = "inline-block";
-    unitBadge.innerText = `All Units (${selectedQuestions.length} Qs)`;
+    unitBadge.innerText = `${selectedWeeks.length} Weeks Selected (${selectedQuestions.length} Qs)`;
   }
+  unitBadge.style.display = "inline-block";
 
   // Timer: 12 seconds per question
   timeLeft = selectedQuestions.length * 12;

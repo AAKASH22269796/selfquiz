@@ -88,170 +88,8 @@ body.dark {
 }
 
 /* ==========================================================================
-   PEACEFUL COLOR THEMES (SUBTLE TINTING & EYE-FRIENDLY PALETTES)
-   Tints the whole page background subtly and harmoniously tints inner cards,
-   borders, badges, and accents. Works in both Light and Dark modes.
+   THEME PALETTE: NOSTALGIA THEME (ORIGINAL CLASSIC) & DARK MODE ONLY
    ========================================================================== */
-
-/* 1. Forest Sage (Botanical Mint & Eucalyptus - Relaxing for eye muscles) */
-body[data-theme="sage"] {
-  --bg-page: #f2f7f4;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #e6f1ea;
-  --bg-input: #ffffff;
-  --border-color: #d0e4d7;
-  --border-focus: #10b981;
-  --text-main: #0c1a13;
-  --text-muted: #4e6b5a;
-  --text-subtle: #829f8f;
-  --primary: #15803d;
-  --primary-hover: #166534;
-  --primary-light: #e8f5ed;
-  --primary-text: #166534;
-}
-body.dark[data-theme="sage"] {
-  --bg-page: #0d1712;
-  --bg-card: #15241d;
-  --bg-card-subtle: #1c3127;
-  --bg-input: #121e18;
-  --border-color: #274537;
-  --border-focus: #34d399;
-  --text-main: #f0fdf4;
-  --text-muted: #86a896;
-  --text-subtle: #567564;
-  --primary: #10b981;
-  --primary-hover: #059669;
-  --primary-light: rgba(16, 185, 129, 0.16);
-  --primary-text: #6ee7b7;
-}
-
-/* 2. Ocean Mist (Calming Sky & Coastal Breeze - Focus & Clarity) */
-body[data-theme="ocean"] {
-  --bg-page: #f0f6fa;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #e2edf6;
-  --bg-input: #ffffff;
-  --border-color: #cde0ee;
-  --border-focus: #0284c7;
-  --text-main: #0c1824;
-  --text-muted: #48657f;
-  --text-subtle: #7d9cb6;
-  --primary: #0284c7;
-  --primary-hover: #0369a1;
-  --primary-light: #e0f2fe;
-  --primary-text: #0369a1;
-}
-body.dark[data-theme="ocean"] {
-  --bg-page: #0b1522;
-  --bg-card: #132235;
-  --bg-card-subtle: #1b2e47;
-  --bg-input: #101c2c;
-  --border-color: #233e60;
-  --border-focus: #38bdf8;
-  --text-main: #f0f9ff;
-  --text-muted: #82a5c4;
-  --text-subtle: #51718f;
-  --primary: #38bdf8;
-  --primary-hover: #0284c7;
-  --primary-light: rgba(56, 189, 248, 0.16);
-  --primary-text: #7dd3fc;
-}
-
-/* 3. Warm Parchment (Cozy Antique Paper & Amber - Zero Blue Light Glare) */
-body[data-theme="parchment"] {
-  --bg-page: #faf5ee;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #f3ecdf;
-  --bg-input: #ffffff;
-  --border-color: #e6dcce;
-  --border-focus: #d97706;
-  --text-main: #1f1810;
-  --text-muted: #6e5f4d;
-  --text-subtle: #a19280;
-  --primary: #b45309;
-  --primary-hover: #92400e;
-  --primary-light: #fef3c7;
-  --primary-text: #92400e;
-}
-body.dark[data-theme="parchment"] {
-  --bg-page: #191410;
-  --bg-card: #251e18;
-  --bg-card-subtle: #342a22;
-  --bg-input: #1e1813;
-  --border-color: #46392e;
-  --border-focus: #fbbf24;
-  --text-main: #fefce8;
-  --text-muted: #b09e88;
-  --text-subtle: #796a58;
-  --primary: #f59e0b;
-  --primary-hover: #d97706;
-  --primary-light: rgba(245, 158, 11, 0.16);
-  --primary-text: #fde68a;
-}
-
-/* 4. Lavender Mist (Soothing Twilight & Lilac - Dreamy & Tranquil) */
-body[data-theme="lavender"] {
-  --bg-page: #f6f3f9;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #ece5f4;
-  --bg-input: #ffffff;
-  --border-color: #ded3ec;
-  --border-focus: #8b5cf6;
-  --text-main: #191124;
-  --text-muted: #645579;
-  --text-subtle: #9887af;
-  --primary: #7c3aed;
-  --primary-hover: #6d28d9;
-  --primary-light: #f3e8ff;
-  --primary-text: #6d28d9;
-}
-body.dark[data-theme="lavender"] {
-  --bg-page: #14101e;
-  --bg-card: #1f182d;
-  --bg-card-subtle: #2c2240;
-  --bg-input: #181324;
-  --border-color: #3f315a;
-  --border-focus: #a78bfa;
-  --text-main: #faf5ff;
-  --text-muted: #9f8ebd;
-  --text-subtle: #6d5d88;
-  --primary: #a78bfa;
-  --primary-hover: #8b5cf6;
-  --primary-light: rgba(167, 139, 250, 0.16);
-  --primary-text: #c4b5fd;
-}
-
-/* 5. Desert Blossom (Soft Peach & Velvet Rose - Gentle & Warm) */
-body[data-theme="peach"] {
-  --bg-page: #fbf4f3;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #f6e7e5;
-  --bg-input: #ffffff;
-  --border-color: #ecdad7;
-  --border-focus: #f43f5e;
-  --text-main: #241114;
-  --text-muted: #735156;
-  --text-subtle: #a68489;
-  --primary: #e11d48;
-  --primary-hover: #be123c;
-  --primary-light: #ffe4e6;
-  --primary-text: #be123c;
-}
-body.dark[data-theme="peach"] {
-  --bg-page: #191113;
-  --bg-card: #26181b;
-  --bg-card-subtle: #362227;
-  --bg-input: #1e1316;
-  --border-color: #492d34;
-  --border-focus: #fb7185;
-  --text-main: #fff1f2;
-  --text-muted: #b78a91;
-  --text-subtle: #7e555d;
-  --primary: #fb7185;
-  --primary-hover: #f43f5e;
-  --primary-light: rgba(251, 113, 133, 0.16);
-  --primary-text: #fecdd3;
-}
 
 /* 6. Nostalgia Theme (Classic 2024/2025 Original - Purple-Violet Gradient & Vibrant Orange) */
 body[data-theme="nostalgia"] {
@@ -494,240 +332,7 @@ body {
   background: var(--bg-card-subtle);
 }
 
-/* ==========================================================================
-   THEME DROPDOWN MENU
-   ========================================================================== */
-.theme-dropdown-wrapper {
-  position: relative;
-  display: inline-block;
-}
 
-.theme-menu-btn {
-  gap: 0.45rem;
-}
-
-.theme-indicator-swatch {
-  width: 13px;
-  height: 13px;
-  border-radius: var(--radius-full);
-  background: var(--primary);
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 1px var(--border-color);
-  flex-shrink: 0;
-  transition: var(--transition);
-}
-
-.theme-menu-arrow {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.theme-dropdown-wrapper.open .theme-menu-arrow {
-  transform: rotate(180deg);
-}
-
-.theme-menu-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  width: 280px;
-  max-width: calc(100vw - 1.5rem);
-  max-height: min(450px, calc(100dvh - 110px));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: 0.55rem;
-  z-index: 1000;
-  animation: theme-pop-in 0.16s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.theme-menu-dropdown::-webkit-scrollbar {
-  width: 5px;
-}
-
-.theme-menu-dropdown::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.theme-menu-dropdown::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: var(--radius-full);
-}
-
-@keyframes theme-pop-in {
-  from {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.theme-dropdown-header {
-  position: sticky;
-  top: -0.55rem;
-  background: var(--bg-card);
-  z-index: 2;
-  padding: 0.4rem 0.6rem 0.55rem;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 0.35rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.theme-dropdown-heading {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-main);
-  letter-spacing: -0.01em;
-}
-
-.theme-dropdown-sub {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
-.theme-options-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.theme-option-item {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.5rem 0.6rem;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  text-align: left;
-  transition: var(--transition);
-  font-family: inherit;
-}
-
-.theme-option-item:hover {
-  background: var(--bg-card-subtle);
-  border-color: var(--border-color);
-}
-
-.theme-option-item.active {
-  background: var(--primary-light);
-  border-color: var(--border-focus);
-}
-
-/* Dual Color Swatch Preview: Outer shows page background tint, inner shows primary accent */
-.theme-swatch-duo {
-  width: 26px;
-  height: 26px;
-  border-radius: var(--radius-full);
-  flex-shrink: 0;
-  border: 1.5px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  display: inline-block;
-}
-
-.theme-swatch-duo::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 14px;
-  height: 14px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Light Mode Swatches */
-.swatch-default { background: #f8fafc; }
-.swatch-default::after { background: #4f46e5; }
-
-.swatch-nostalgia { background: linear-gradient(135deg, #667eea, #764ba2); }
-.swatch-nostalgia::after { background: linear-gradient(135deg, #ff7a18, #ffb347); }
-
-.swatch-sage { background: #f2f7f4; }
-.swatch-sage::after { background: #15803d; }
-
-.swatch-ocean { background: #f0f6fa; }
-.swatch-ocean::after { background: #0284c7; }
-
-.swatch-parchment { background: #faf5ee; }
-.swatch-parchment::after { background: #b45309; }
-
-.swatch-lavender { background: #f6f3f9; }
-.swatch-lavender::after { background: #7c3aed; }
-
-.swatch-peach { background: #fbf4f3; }
-.swatch-peach::after { background: #e11d48; }
-
-/* Dark Mode Swatches */
-body.dark .swatch-default { background: #0f172a; }
-body.dark .swatch-default::after { background: #6366f1; }
-
-body.dark .swatch-nostalgia { background: #121212; }
-body.dark .swatch-nostalgia::after { background: linear-gradient(135deg, #ff7a18, #ffb347); }
-
-body.dark .swatch-sage { background: #0d1712; }
-body.dark .swatch-sage::after { background: #10b981; }
-
-body.dark .swatch-ocean { background: #0b1522; }
-body.dark .swatch-ocean::after { background: #38bdf8; }
-
-body.dark .swatch-parchment { background: #191410; }
-body.dark .swatch-parchment::after { background: #f59e0b; }
-
-body.dark .swatch-lavender { background: #14101e; }
-body.dark .swatch-lavender::after { background: #a78bfa; }
-
-body.dark .swatch-peach { background: #191113; }
-body.dark .swatch-peach::after { background: #fb7185; }
-
-.theme-option-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-}
-
-.theme-option-name {
-  font-size: 0.825rem;
-  font-weight: 600;
-  color: var(--text-main);
-  line-height: 1.25;
-}
-
-.theme-option-desc {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.theme-check {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--primary);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  flex-shrink: 0;
-}
-
-.theme-option-item.active .theme-check {
-  opacity: 1;
-}
 
 /* ==========================================================================
    BUTTONS & COMMON UI
@@ -849,57 +454,279 @@ body.dark .swatch-peach::after { background: #fb7185; }
   box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-/* Mode Selection Segment */
-.mode-toggle-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.65rem;
-  margin-top: 0.25rem;
+/* ==========================================================================
+   WEEK SELECTION CHECKBOX GRID (RESPONSIVE & TOUCH-FRIENDLY)
+   Seamless fit on Android phones, tablets, and laptops with large click targets.
+   ========================================================================== */
+.week-selection-group {
+  margin-bottom: 1.25rem;
 }
 
-.mode-card {
+.week-selection-header {
   display: flex;
-  flex-direction: column;
-  padding: 0.85rem;
-  border: 1.5px solid var(--border-color);
-  border-radius: var(--radius-md);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.week-selection-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.selected-weeks-summary {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+}
+
+body[data-theme="nostalgia"]:not(.dark) .selected-weeks-summary {
+  background: #fff3e6;
+  color: #c2410c;
+  border: 1px solid rgba(255, 122, 24, 0.35);
+}
+
+body.dark[data-theme="nostalgia"] .selected-weeks-summary,
+body.dark .selected-weeks-summary {
+  background: rgba(255, 122, 24, 0.2);
+  color: #ffb347;
+  border: 1px solid rgba(255, 122, 24, 0.35);
+}
+
+.week-selection-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn-week-action {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: var(--transition);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card-subtle);
+  color: var(--text-muted);
+}
+
+.btn-week-action:hover {
+  color: var(--text-main);
+  border-color: var(--text-muted);
+}
+
+body[data-theme="nostalgia"]:not(.dark) .btn-week-action {
+  background: #f8f9fa;
+  border-color: #d1d5db;
+  color: #4b5563;
+}
+
+body[data-theme="nostalgia"]:not(.dark) .btn-week-action:hover {
+  background: #ff7a18;
+  color: #ffffff;
+  border-color: #ff7a18;
+}
+
+body.dark[data-theme="nostalgia"] .btn-week-action,
+body.dark .btn-week-action {
+  background: #2a2a2a;
+  border-color: #444444;
+  color: #a0a0a0;
+}
+
+body.dark[data-theme="nostalgia"] .btn-week-action:hover,
+body.dark .btn-week-action:hover {
+  background: #ff7a18;
+  color: #ffffff;
+  border-color: #ff7a18;
+}
+
+/* Checkbox Grid: 2 columns on mobile, 4-7 auto-fill columns on laptop */
+.weeks-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.55rem;
+}
+
+@media (max-width: 520px) {
+  .weeks-checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .weeks-checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.week-check-card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  min-height: 50px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
   background: var(--bg-card);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
-.mode-card:hover {
-  border-color: var(--border-focus);
+.week-check-card:hover {
+  transform: translateY(-1px);
 }
 
-.mode-card input[type="radio"] {
+.week-check-card:active {
+  transform: scale(0.98);
+}
+
+.week-checkbox {
   position: absolute;
   opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
 }
 
-.mode-card.selected {
-  border-color: var(--primary);
-  background: var(--primary-light);
-}
-
-.mode-card-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--text-main);
+.week-check-custom {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
-.mode-card.selected .mode-card-title {
-  color: var(--primary-text);
+.week-check-icon {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #ffffff;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mode-card-desc {
-  font-size: 0.75rem;
+.week-check-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.week-check-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.week-check-count {
+  font-size: 0.72rem;
   color: var(--text-muted);
-  margin-top: 0.2rem;
+  line-height: 1.2;
+}
+
+/* Light Mode Nostalgia Week Card */
+body[data-theme="nostalgia"]:not(.dark) .week-check-card {
+  background: #ffffff;
+  border-color: #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+body[data-theme="nostalgia"]:not(.dark) .week-check-card:hover {
+  border-color: #ffb347;
+  background: #fffaf5;
+}
+
+body[data-theme="nostalgia"]:not(.dark) .week-check-card.checked {
+  background: #fff4e8;
+  border-color: #ff7a18;
+  box-shadow: 0 3px 10px rgba(255, 122, 24, 0.18);
+}
+
+body[data-theme="nostalgia"]:not(.dark) .week-check-card.checked .week-check-custom {
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  border-color: #ff7a18;
+}
+
+body[data-theme="nostalgia"]:not(.dark) .week-check-card.checked .week-check-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+body[data-theme="nostalgia"]:not(.dark) .week-check-card.checked .week-check-title {
+  color: #c2410c;
+}
+
+/* Dark Mode Nostalgia Week Card */
+body.dark[data-theme="nostalgia"] .week-check-card,
+body.dark .week-check-card {
+  background: #252525;
+  border-color: #383838;
+}
+
+body.dark[data-theme="nostalgia"] .week-check-card:hover,
+body.dark .week-check-card:hover {
+  background: #2e2e2e;
+  border-color: #ff9138;
+}
+
+body.dark[data-theme="nostalgia"] .week-check-card.checked,
+body.dark .week-check-card.checked {
+  background: rgba(255, 122, 24, 0.2) !important;
+  border-color: #ff7a18 !important;
+  box-shadow: 0 0 0 1px rgba(255, 122, 24, 0.35);
+}
+
+body.dark[data-theme="nostalgia"] .week-check-custom,
+body.dark .week-check-custom {
+  background: #1e1e1e;
+  border-color: #555555;
+}
+
+body.dark[data-theme="nostalgia"] .week-check-card.checked .week-check-custom,
+body.dark .week-check-card.checked .week-check-custom {
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  border-color: #ff7a18;
+}
+
+body.dark[data-theme="nostalgia"] .week-check-card.checked .week-check-icon,
+body.dark .week-check-card.checked .week-check-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+body.dark[data-theme="nostalgia"] .week-check-title,
+body.dark .week-check-title {
+  color: #f3f4f6;
+}
+
+body.dark[data-theme="nostalgia"] .week-check-card.checked .week-check-title,
+body.dark .week-check-card.checked .week-check-title {
+  color: #ffb347;
+}
+
+body.dark[data-theme="nostalgia"] .week-check-count,
+body.dark .week-check-count {
+  color: #9ca3af;
 }
 
 /* Quick Question Count Chips */
@@ -1510,27 +1337,7 @@ body.dark .correct-badge {
 
   .header-actions {
     width: 100%;
-    justify-content: space-between;
-  }
-
-  .theme-dropdown-wrapper {
-    position: relative;
-  }
-
-  .theme-menu-dropdown {
-    left: 0;
-    right: auto;
-    width: min(290px, calc(100vw - 1.5rem));
-    max-width: calc(100vw - 1.5rem);
-  }
-
-  .theme-option-item {
-    padding: 0.6rem 0.65rem;
-    min-height: 44px;
-  }
-
-  .mode-toggle-group {
-    grid-template-columns: 1fr;
+    justify-content: flex-end;
   }
 
   .nav-pills {
@@ -1593,9 +1400,7 @@ body[data-theme="nostalgia"]:not(.dark) .btn-secondary-sm:hover {
   border-color: rgba(255, 255, 255, 0.6);
 }
 
-body[data-theme="nostalgia"]:not(.dark) .theme-menu-arrow {
-  color: rgba(255, 255, 255, 0.85);
-}
+
 
 /* Nav Pills (Practice Quiz vs Learn It) in Light Mode */
 body[data-theme="nostalgia"]:not(.dark) .nav-pills {
@@ -1707,9 +1512,14 @@ body[data-theme="nostalgia"]:not(.dark) .option-label:hover {
   border-color: #ffb347;
 }
 
-body[data-theme="nostalgia"] .option-label.selected {
-  background: #fff3e6;
-  border-color: #ff7a18;
+body[data-theme="nostalgia"]:not(.dark) .option-label.selected {
+  background: #fff3e6 !important;
+  border-color: #ff7a18 !important;
+}
+
+body[data-theme="nostalgia"]:not(.dark) .option-label.selected .option-text {
+  color: #1a1a1a !important;
+  font-weight: 600;
 }
 
 body[data-theme="nostalgia"] .option-label input[type="radio"] {
@@ -1717,8 +1527,8 @@ body[data-theme="nostalgia"] .option-label input[type="radio"] {
 }
 
 body[data-theme="nostalgia"] .option-label.selected .option-letter {
-  background: linear-gradient(135deg, #ff7a18, #ffb347);
-  color: #ffffff;
+  background: linear-gradient(135deg, #ff7a18, #ffb347) !important;
+  color: #ffffff !important;
 }
 
 /* Classic Answer States (Light Mode) */
@@ -1804,22 +1614,53 @@ body.dark[data-theme="nostalgia"] .form-control {
   color: #ffffff;
 }
 
-body.dark[data-theme="nostalgia"] .mode-card {
-  background: #2a2a2a;
-  border: 1.5px solid #444444;
+/* Dark Mode Option Labels in Nostalgia (Never turns white when selected or navigating!) */
+body.dark[data-theme="nostalgia"] .option-label,
+body.dark .option-label {
+  background: #252525;
+  border-color: #383838;
 }
 
-body.dark[data-theme="nostalgia"] .mode-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+body.dark[data-theme="nostalgia"] .option-label .option-text,
+body.dark .option-label .option-text {
+  color: #e0e0e0;
 }
 
-body.dark[data-theme="nostalgia"] .mode-card.selected {
-  background: rgba(255, 122, 24, 0.2);
-  border-color: #ff7a18;
+body.dark[data-theme="nostalgia"] .option-label .option-letter,
+body.dark .option-label .option-letter {
+  background: #303030;
+  color: #a0a0a0;
+  border: 1px solid #444444;
 }
 
 body.dark[data-theme="nostalgia"] .option-label:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: #ff9138 !important;
+}
+
+body.dark[data-theme="nostalgia"] .option-label.selected,
+body.dark .option-label.selected {
+  background: rgba(255, 122, 24, 0.22) !important;
+  border-color: #ff7a18 !important;
+  box-shadow: 0 0 0 1px rgba(255, 122, 24, 0.4) !important;
+}
+
+body.dark[data-theme="nostalgia"] .option-label.selected .option-text,
+body.dark .option-label.selected .option-text {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+body.dark[data-theme="nostalgia"] .option-label.selected .option-letter,
+body.dark .option-label.selected .option-letter {
+  background: linear-gradient(135deg, #ff7a18, #ffb347) !important;
+  color: #ffffff !important;
+}
+
+body.dark[data-theme="nostalgia"] .option-label.selected:hover,
+body.dark .option-label.selected:hover {
+  background: rgba(255, 122, 24, 0.3) !important;
+  border-color: #ff9138 !important;
 }
 
 body.dark[data-theme="nostalgia"] .timer-pill {
